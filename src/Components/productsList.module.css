@@ -1,0 +1,30 @@
+.productPage {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+.productList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 40%;
+  margin-right: 20px;
+}
+
+.productItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 33.33%;
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.productItem img {
+  width: 100%;
+  height: auto;
+}
