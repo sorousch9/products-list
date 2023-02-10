@@ -1,3 +1,4 @@
+import Button from '@mui/material/Button';
 interface ProductT {
   product?: {
     id: string;
@@ -17,7 +18,7 @@ const Product: React.FC<ProductT> = ({ product }) => {
       <p>
         Price: <strong>${product?.price}</strong>
       </p>
-      <button>Add to Cart</button>
+      <Button variant="outlined"  >Add to Cart</Button>
     </div>
   );
 };
