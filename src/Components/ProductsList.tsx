@@ -3,6 +3,8 @@ import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Unstable_Grid2";
+import { useEffect, useState } from "react";
+import axios from "axios";
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
   ...theme.typography.body2,
@@ -12,36 +14,13 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 const ProductList: React.FC = () => {
-  const products = [
-    {
-      id: "1",
-      name: "Product 1",
-      description: "This is the first product",
-      price: 10,
-      img: "https://images.pexels.com/photos/13867156/pexels-photo-13867156.jpeg?cs=srgb&dl=pexels-studio-naae-13867156.jpg&fm=jpg&w=140&h=153",
-    },
-    {
-      id: "2",
-      name: "Product 2",
-      description: "This is the second product",
-      price: 20,
-      img: "https://images.pexels.com/photos/13867156/pexels-photo-13867156.jpeg?cs=srgb&dl=pexels-studio-naae-13867156.jpg&fm=jpg&w=140&h=153",
-    },
-    {
-      id: "3",
-      name: "Product 3",
-      description: "This is the third product",
-      price: 30,
-      img: "https://images.pexels.com/photos/13867156/pexels-photo-13867156.jpeg?cs=srgb&dl=pexels-studio-naae-13867156.jpg&fm=jpg&w=140&h=153",
-    },
-    {
-      id: "4",
-      name: "Product 4",
-      description: "This is the third product",
-      price: 40,
-      img: "https://images.pexels.com/photos/13867156/pexels-photo-13867156.jpeg?cs=srgb&dl=pexels-studio-naae-13867156.jpg&fm=jpg&w=140&h=153",
-    },
-  ];
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    axios.get("http://localhost:3000/products").then((response) => {
+      setProducts(response.data);
+    });
+  }, []);
+  console.log(products);
 
   return (
     <Box sx={{ flexGrow: 1 }}>
