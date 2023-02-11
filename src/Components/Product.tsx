@@ -29,9 +29,6 @@ const Product: React.FC<ProductT> = ({ product }) => {
         <Typography gutterBottom variant="h5" component="div">
           {product?.name}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
-          {product?.description}
-        </Typography>
         <Typography>
           Price: <strong>${product?.price}</strong>
         </Typography>

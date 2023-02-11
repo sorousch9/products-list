@@ -14,7 +14,7 @@ import {
   Rating,
   Typography,
 } from "@mui/material";
-import { red } from "@mui/material/colors";
+import { blueGrey } from "@mui/material/colors";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import ShareIcon from "@mui/icons-material/Share";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
@@ -45,7 +45,7 @@ const Product = () => {
           <Item>
             <Card>
               <CardMedia
-                sx={{ height: 750 }}
+                sx={{ height: 650 }}
                 image="https://images.pexels.com/photos/14758630/pexels-photo-14758630.jpeg?cs=srgb&dl=pexels-hatice-no%C4%9Fman-14758630.jpg&fm=jpg&w=640&h=960"
                 title="green iguana"
               />
@@ -109,7 +109,7 @@ const Product = () => {
               </FormControl>
             </Item>
             <Item sx={{ textAlign: "left" }}>
-              <Typography variant="h5" color={red[500]}>
+              <Typography variant="h5" color={blueGrey[900]}>
                 Price : $ 199
               </Typography>
               <Typography variant="caption">
