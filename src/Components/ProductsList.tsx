@@ -5,6 +5,16 @@ import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Unstable_Grid2";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import MultipleSelectCheckmarks from "../UI/Filter";
+interface ProductT {
+  id: string;
+  name: string;
+  description: string;
+  price: number;
+  img: string;
+}
+
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
   ...theme.typography.body2,
@@ -14,7 +24,7 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 const ProductList: React.FC = () => {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<ProductT[]>([]);
   useEffect(() => {
     axios.get("http://localhost:3000/products").then((response) => {
       setProducts(response.data);
@@ -26,7 +36,18 @@ const ProductList: React.FC = () => {
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
         <Grid xs={12} md={5} lg={4}>
-          <Item>Filtering section</Item>
+          <Grid container spacing={2}>
+            <Item>Filtering section</Item>
+          </Grid>
+          <Item>
+            Price = <MultipleSelectCheckmarks/>
+          </Item>
+          <Item>
+            sss
+          </Item>
+          <Item>
+            sss
+          </Item>
         </Grid>
         <Grid container xs={12} md={7} lg={8} spacing={4}>
           {products.map((product) => (
@@ -50,13 +71,13 @@ const ProductList: React.FC = () => {
           </Grid>
           <Grid container columnSpacing={1} sx={{ order: { xs: 1, sm: 2 } }}>
             <Grid>
-              <Item>Link A</Item>
+              <Link to={"/"}>Link A</Link>
             </Grid>
             <Grid>
-              <Item>Link B</Item>
+              <Link to={"/"}>Link B</Link>
             </Grid>
             <Grid>
-              <Item>Link C</Item>
+              <Link to={"/"}>Link C</Link>
             </Grid>
           </Grid>
         </Grid>
