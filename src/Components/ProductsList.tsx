@@ -11,9 +11,11 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import ListItemText from "@mui/material/ListItemText";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
+import Select from "@mui/material/Select";
 import Checkbox from "@mui/material/Checkbox";
-
+import Slider from "@mui/material/Slider";
+import Typography from "@mui/material/Typography";
+import { Stack } from "@mui/system";
 interface ProductT {
   id: string;
   name: string;
@@ -21,6 +23,11 @@ interface ProductT {
   price: number;
   img: string;
 }
+// Price
+function pricetext(price: number) {
+  return `${price} €`;
+}
+const minDistance = 10;
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -41,15 +48,24 @@ const MenuProps = {
   },
 };
 const productsSizeFilter = ["38", "48", "33", "42", "35", "44"];
-const productsPriceFilter = [10, 12, 13, 29, 49, 58];
+
+const productsColorFilter = [
+  "Black",
+  "white",
+  "red",
+  "yellow",
+  "green",
+  "perple",
+];
 
 const ProductList: React.FC = () => {
   const [products, setProducts] = useState<ProductT[]>([]);
-  const [productPrice, setProductPrice] = useState<number[]>([]);
+  const [productPrice, setProductPrice] = useState<number[]>([0, 100]);
   const [productSize, setProductSize] = useState<string[]>([]);
-
+  const [productColor, setProductColor] = useState<string[]>([]);
+  console.log(productPrice);
   useEffect(() => {
-    axios.get("http://localhost:3000/products").then((response) => {
+    axios.get("http://localhost:3004/products").then((response) => {
       setProducts(response.data);
     });
   }, []);
@@ -59,13 +75,36 @@ const ProductList: React.FC = () => {
       target: { value },
     } = event;
     if (event.target.name === "price") {
-      setProductPrice(typeof value === "string" ? value.split(",") : value);
+      setProductColor(typeof value === "string" ? value.split(",") : value);
     }
     if (event.target.name === "size") {
-      setProductSize(value);
+      setProductSize(typeof value === "string" ? value.split(",") : value);
+    }
+    console.log(event.target);
+  };
+
+  // Price Filter
+
+  const handleChangeprice = (
+    event: Event,
+    newPrice: number | number[],
+    activeThumb: number
+  ) => {
+    if (!Array.isArray(newPrice)) {
+      return;
     }
 
-    console.log(event.target);
+    if (activeThumb === 0) {
+      setProductPrice([
+        Math.min(newPrice[0], productPrice[1] - minDistance),
+        productPrice[1],
+      ]);
+    } else {
+      setProductPrice([
+        productPrice[0],
+        Math.max(newPrice[1], productPrice[0] + minDistance),
+      ]);
+    }
   };
 
   return (
@@ -75,56 +114,69 @@ const ProductList: React.FC = () => {
           <Grid container spacing={0}>
             <Item>Filtering section</Item>
           </Grid>
-          <Item>
-            <FormControl sx={{ m: 1, width: 300 }}>
-              <InputLabel id="demo-multiple-checkbox-label">Price</InputLabel>
-              <Select
-                labelId="demo-multiple-checkbox-label"
-                id="demo-multiple-checkbox"
-                multiple
-                name="price"
+          <Stack spacing={2}>
+            <Item sx={{ paddingRight: "8rem", paddingLeft: "8rem" }}>
+              <Typography gutterBottom>Price</Typography>
+              <Slider
+                getAriaLabel={() => "Minimum distance shift"}
+                valueLabelDisplay="on"
                 value={productPrice}
-                onChange={handleChange}
-                input={<OutlinedInput label="Price" />}
-                renderValue={(selected) => selected.join(", ")}
-                MenuProps={MenuProps}
-              >
-                {productsPriceFilter.map((product) => (
-                  <MenuItem key={product} value={product}>
-                    <Checkbox checked={productPrice.indexOf(product) > -1} />
-                    <ListItemText primary={product} />
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          </Item>
-          <Item>
-            <FormControl sx={{ m: 1, width: 300 }}>
-              <InputLabel id="demo-multiple-checkbox-label">Size</InputLabel>
-              <Select
-                labelId="demo-multiple-checkbox-label"
-                id="demo-multiple-checkbox"
-                multiple
-                name="price"
-                value={productSize}
-                onChange={handleChange}
-                input={<OutlinedInput label="Size" />}
-                renderValue={(selected) => selected.join(", ")}
-                MenuProps={MenuProps}
-              >
-                {productsSizeFilter.map((product) => (
-                  <MenuItem key={product} value={product}>
-                    <Checkbox checked={productSize.indexOf(product) > -1} />
-                    <ListItemText primary={product} />
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          </Item>
-          <Item>Color</Item>
-          <Item>Action</Item>
-          <Item>Categories</Item>
-          <Item>for whom?</Item>
+                onChange={handleChangeprice}
+                getAriaValueText={pricetext}
+                disableSwap
+              />
+            </Item>
+            <Item>
+              <FormControl sx={{ m: 1, width: 300 }}>
+                <InputLabel id="demo-multiple-checkbox-label">Size</InputLabel>
+                <Select
+                  labelId="demo-multiple-checkbox-label"
+                  id="demo-multiple-checkbox"
+                  multiple
+                  name="price"
+                  value={productSize}
+                  onChange={handleChange}
+                  input={<OutlinedInput label="Size" />}
+                  renderValue={(selected) => selected.join(", ")}
+                  MenuProps={MenuProps}
+                >
+                  {productsSizeFilter.map((product) => (
+                    <MenuItem key={product} value={product}>
+                      <Checkbox checked={productSize.indexOf(product) > -1} />
+                      <ListItemText primary={product} />
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </Item>
+            <Item>
+              {" "}
+              <FormControl sx={{ m: 1, width: 300 }}>
+                <InputLabel id="demo-multiple-checkbox-label">Color</InputLabel>
+                <Select
+                  labelId="demo-multiple-checkbox-label"
+                  id="demo-multiple-checkbox"
+                  multiple
+                  name="Color"
+                  value={productColor}
+                  onChange={handleChange}
+                  input={<OutlinedInput label="Color" />}
+                  renderValue={(selected) => selected.join(", ")}
+                  MenuProps={MenuProps}
+                >
+                  {productsColorFilter.map((product) => (
+                    <MenuItem key={product} value={product}>
+                      <Checkbox checked={productColor.indexOf(product) > -1} />
+                      <ListItemText primary={product} />
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </Item>
+            <Item>Action</Item>
+            <Item>Categories</Item>
+            <Item>for whom?</Item>
+          </Stack>
         </Grid>
         <Grid container xs={12} md={7} lg={8} spacing={4}>
           {products.map((product) => (
@@ -164,6 +216,3 @@ const ProductList: React.FC = () => {
 };
 
 export default ProductList;
-<div>
-  <ul></ul>
-</div>;
