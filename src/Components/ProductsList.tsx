@@ -11,11 +11,13 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import ListItemText from "@mui/material/ListItemText";
-import Select from "@mui/material/Select";
+import Select, { SelectChangeEvent } from '@mui/material/Select';
 import Checkbox from "@mui/material/Checkbox";
 import Slider from "@mui/material/Slider";
 import Typography from "@mui/material/Typography";
 import { Stack } from "@mui/system";
+import { FormControlLabel, Switch } from "@mui/material";
+
 interface ProductT {
   id: string;
   name: string;
@@ -57,12 +59,22 @@ const productsColorFilter = [
   "green",
   "perple",
 ];
+const productsBrand = [
+  "Nike",
+  "Puma",
+  "Reebok",
+  "Adidas ",
+  "Armani",
+  "BOSS",
+];
 
 const ProductList: React.FC = () => {
   const [products, setProducts] = useState<ProductT[]>([]);
   const [productPrice, setProductPrice] = useState<number[]>([0, 100]);
   const [productSize, setProductSize] = useState<string[]>([]);
   const [productColor, setProductColor] = useState<string[]>([]);
+  const [brands, setBrands] = useState("");
+
   console.log(productPrice);
   useEffect(() => {
     axios.get("http://localhost:3004/products").then((response) => {
@@ -106,6 +118,9 @@ const ProductList: React.FC = () => {
       ]);
     }
   };
+  const handleChangeBrands = (event: SelectChangeEvent) => {
+    setBrands(event.target.value);
+  };
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -115,7 +130,7 @@ const ProductList: React.FC = () => {
             <Item>Filtering section</Item>
           </Grid>
           <Stack spacing={2}>
-            <Item sx={{ paddingRight: "8rem", paddingLeft: "8rem" }}>
+            <Item sx={{ paddingRight: "7rem", paddingLeft: "7rem" }}>
               <Typography gutterBottom>Price</Typography>
               <Slider
                 getAriaLabel={() => "Minimum distance shift"}
@@ -173,9 +188,33 @@ const ProductList: React.FC = () => {
                 </Select>
               </FormControl>
             </Item>
-            <Item>Action</Item>
-            <Item>Categories</Item>
-            <Item>for whom?</Item>
+            <Item>
+              <FormControlLabel
+                value="Action"
+                control={<Switch color="primary" />}
+                label="Action"
+                labelPlacement="start"
+              />
+            </Item>
+            <Item>
+              <FormControl sx={{ width: 300 }}>
+                <InputLabel id="brands">Brands</InputLabel>
+                <Select
+                  labelId="brands"
+                  value={brands}
+                  label="brands"
+                  onChange={handleChangeBrands}
+                  renderValue={(value) => `${value}`}>
+                  <MenuItem value="">
+                    <em>None</em>
+                  </MenuItem>
+                  {productsBrand.map((brands) => (
+                    <MenuItem value={brands} key={brands}>{brands}</MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </Item>
+
           </Stack>
         </Grid>
         <Grid container xs={12} md={7} lg={8} spacing={4}>

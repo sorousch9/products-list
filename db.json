@@ -1,39 +1,244 @@
 {
   "products": [
     {
-      "id": "1",
+      "id": "1D2",
       "name": "Product 1",
-      "description": "This is the first product",
+      "description": "This is a discription for this product",
       "price": 10,
-      "img": "https://images.pexels.com/photos/13867156/pexels-photo-13867156.jpeg?cs=srgb&dl=pexels-studio-naae-13867156.jpg&fm=jpg&w=140&h=153"
+      "img": "https://images.pexels.com/photos/13867156/pexels-photo-13867156.jpeg?cs=srgb&dl=pexels-studio-naae-13867156.jpg&fm=jpg&w=140&h=153",
+      "size": "38",
+      "color": "Black",
+      "brand": "Nike"
     },
     {
-      "id": "2",
+      "id": "2D2",
       "name": "Product 2",
-      "description": "This is the second product",
+      "description": "This is a discription for this product",
       "price": 20,
-      "img": "https://images.pexels.com/photos/13867156/pexels-photo-13867156.jpeg?cs=srgb&dl=pexels-studio-naae-13867156.jpg&fm=jpg&w=140&h=153"
+      "img": "https://images.pexels.com/photos/13867156/pexels-photo-13867156.jpeg?cs=srgb&dl=pexels-studio-naae-13867156.jpg&fm=jpg&w=140&h=153",
+      "size": "39",
+      "color": "white",
+      "brand": "Puma"
     },
     {
-      "id": "3",
+      "id": "3D2",
       "name": "Product 3",
-      "description": "This is the third product",
+      "description": "This is a discription for this product",
       "price": 30,
-      "img": "https://images.pexels.com/photos/13867156/pexels-photo-13867156.jpeg?cs=srgb&dl=pexels-studio-naae-13867156.jpg&fm=jpg&w=140&h=153"
+      "img": "https://images.pexels.com/photos/13867156/pexels-photo-13867156.jpeg?cs=srgb&dl=pexels-studio-naae-13867156.jpg&fm=jpg&w=140&h=153",
+      "size": "40",
+      "color": "Black",
+      "brand": "Reebok"
     },
     {
-      "id": "4",
+      "id": "4D2",
       "name": "Product 4",
-      "description": "This is the product",
-      "price": 40,
-      "img": "https://images.pexels.com/photos/13867156/pexels-photo-13867156.jpeg?cs=srgb&dl=pexels-studio-naae-13867156.jpg&fm=jpg&w=140&h=153"
+      "description": "This is a discription for this product",
+      "price": 35,
+      "img": "https://images.pexels.com/photos/13867156/pexels-photo-13867156.jpeg?cs=srgb&dl=pexels-studio-naae-13867156.jpg&fm=jpg&w=140&h=153",
+      "size": "40",
+      "color": "perple",
+      "brand": "Nike"
     },
     {
-      "id": "5",
-      "name": "Product 5",
-      "description": "This is the product",
+      "id": "5D2",
+      "name": "Product5",
+      "description": "This is a discription for this product",
+      "price": 100,
+      "img": "https://images.pexels.com/photos/13867156/pexels-photo-13867156.jpeg?cs=srgb&dl=pexels-studio-naae-13867156.jpg&fm=jpg&w=140&h=153",
+      "size": "48",
+      "color": "Black",
+      "brand": "Nike"
+    },
+    {
+      "id": "6D2",
+      "name": "Product 6",
+      "description": "This is a discription for this product",
+      "price": 53,
+      "img": "https://images.pexels.com/photos/13867156/pexels-photo-13867156.jpeg?cs=srgb&dl=pexels-studio-naae-13867156.jpg&fm=jpg&w=140&h=153",
+      "size": "38",
+      "color": "green",
+      "brand": "Reebok"
+    },
+    {
+      "id": "7D2",
+      "name": "Product 7",
+      "description": "This is a discription for this product",
+      "price": 63,
+      "img": "https://images.pexels.com/photos/13867156/pexels-photo-13867156.jpeg?cs=srgb&dl=pexels-studio-naae-13867156.jpg&fm=jpg&w=140&h=153",
+      "size": "38",
+      "color": "Black",
+      "brand": "Reebok"
+    },
+    {
+      "id": "8D2",
+      "name": "Product 8",
+      "description": "This is a discription for this product",
+      "price": 76,
+      "img": "https://images.pexels.com/photos/13867156/pexels-photo-13867156.jpeg?cs=srgb&dl=pexels-studio-naae-13867156.jpg&fm=jpg&w=140&h=153",
+      "size": "38",
+      "color": "red",
+      "brand": "Adidas"
+    },
+    {
+      "id": "9D2",
+      "name": "Product 9",
+      "description": "This is a discription for this product",
+      "price": 86,
+      "img": "https://images.pexels.com/photos/13867156/pexels-photo-13867156.jpeg?cs=srgb&dl=pexels-studio-naae-13867156.jpg&fm=jpg&w=140&h=153",
+      "size": "38",
+      "color": "white",
+      "brand": "Armani"
+    },
+    {
+      "id": "10D2",
+      "name": "Product 10",
+      "description": "This is a discription for this product",
+      "price": 34,
+      "img": "https://images.pexels.com/photos/13867156/pexels-photo-13867156.jpeg?cs=srgb&dl=pexels-studio-naae-13867156.jpg&fm=jpg&w=140&h=153",
+      "size": "38",
+      "color": "Black",
+      "brand": "BOSS"
+    },
+    {
+      "id": "11D2",
+      "name": "Product 11",
+      "description": "This is a discription for this product",
+      "price": 25,
+      "img": "https://images.pexels.com/photos/13867156/pexels-photo-13867156.jpeg?cs=srgb&dl=pexels-studio-naae-13867156.jpg&fm=jpg&w=140&h=153",
+      "size": "38",
+      "color": "Black",
+      "brand": "Adidas"
+    },
+    {
+      "id": "12D2",
+      "name": "Product 12",
+      "description": "This is a discription for this product",
+      "price": 75,
+      "img": "https://images.pexels.com/photos/13867156/pexels-photo-13867156.jpeg?cs=srgb&dl=pexels-studio-naae-13867156.jpg&fm=jpg&w=140&h=153",
+      "size": "38",
+      "color": "yellow",
+      "brand": "Puma"
+    },
+    {
+      "id": "13D2",
+      "name": "Product 13",
+      "description": "This is a discription for this product",
       "price": 50,
-      "img": "https://images.pexels.com/photos/13867156/pexels-photo-13867156.jpeg?cs=srgb&dl=pexels-studio-naae-13867156.jpg&fm=jpg&w=140&h=153"
+      "img": "https://images.pexels.com/photos/13867156/pexels-photo-13867156.jpeg?cs=srgb&dl=pexels-studio-naae-13867156.jpg&fm=jpg&w=140&h=153",
+      "size": "38",
+      "color": "yellow",
+      "brand": "Adidas"
+    },
+    {
+      "id": "14D2",
+      "name": "Product 14",
+      "description": "This is a discription for this product",
+      "price": 15,
+      "img": "https://images.pexels.com/photos/13867156/pexels-photo-13867156.jpeg?cs=srgb&dl=pexels-studio-naae-13867156.jpg&fm=jpg&w=140&h=153",
+      "size": "38",
+      "color": "red",
+      "brand": "Nike"
+    },
+    {
+      "id": "15D2",
+      "name": "Product 15",
+      "description": "This is a discription for this product",
+      "price": 65,
+      "img": "https://images.pexels.com/photos/13867156/pexels-photo-13867156.jpeg?cs=srgb&dl=pexels-studio-naae-13867156.jpg&fm=jpg&w=140&h=153",
+      "size": "38",
+      "color": "red",
+      "brand": "BOSS"
+    },
+    {
+      "id": "16D2",
+      "name": "Product 16",
+      "description": "This is a discription for this product",
+      "price": 65,
+      "img": "https://images.pexels.com/photos/13867156/pexels-photo-13867156.jpeg?cs=srgb&dl=pexels-studio-naae-13867156.jpg&fm=jpg&w=140&h=153",
+      "size": "38",
+      "color": "Black",
+      "brand": "Nike"
+    },
+    {
+      "id": "17D2",
+      "name": "Product 17",
+      "description": "This is a discription for this product",
+      "price": 73,
+      "img": "https://images.pexels.com/photos/13867156/pexels-photo-13867156.jpeg?cs=srgb&dl=pexels-studio-naae-13867156.jpg&fm=jpg&w=140&h=153",
+      "size": "38",
+      "color": "perple",
+      "brand": "Reebok"
+    },
+    {
+      "id": "18D2",
+      "name": "Product 18",
+      "description": "This is a discription for this product",
+      "price": 89,
+      "img": "https://images.pexels.com/photos/13867156/pexels-photo-13867156.jpeg?cs=srgb&dl=pexels-studio-naae-13867156.jpg&fm=jpg&w=140&h=153",
+      "size": "38",
+      "color": "perple",
+      "brand": "Nike"
+    },
+    {
+      "id": "19D2",
+      "name": "Product 19",
+      "description": "This is a discription for this product",
+      "price": 98,
+      "img": "https://images.pexels.com/photos/13867156/pexels-photo-13867156.jpeg?cs=srgb&dl=pexels-studio-naae-13867156.jpg&fm=jpg&w=140&h=153",
+      "size": "38",
+      "color": "perple",
+      "brand": "BOSS"
+    },
+    {
+      "id": "20D2",
+      "name": "Product 20",
+      "description": "This is a discription for this product",
+      "price": 43,
+      "img": "https://images.pexels.com/photos/13867156/pexels-photo-13867156.jpeg?cs=srgb&dl=pexels-studio-naae-13867156.jpg&fm=jpg&w=140&h=153",
+      "size": "38",
+      "color": "Black",
+      "brand": "Nike"
+    },
+    {
+      "id": "21D2",
+      "name": "Product 21",
+      "description": "This is a discription for this product",
+      "price": 33,
+      "img": "https://images.pexels.com/photos/13867156/pexels-photo-13867156.jpeg?cs=srgb&dl=pexels-studio-naae-13867156.jpg&fm=jpg&w=140&h=153",
+      "size": "38",
+      "color": "green",
+      "brand": "Puma"
+    },
+    {
+      "id": "22D2",
+      "name": "Product 22",
+      "description": "This is a discription for this product",
+      "price": 40,
+      "img": "https://images.pexels.com/photos/13867156/pexels-photo-13867156.jpeg?cs=srgb&dl=pexels-studio-naae-13867156.jpg&fm=jpg&w=140&h=153",
+      "size": "38",
+      "color": "white",
+      "brand": "Puma"
+    },
+    {
+      "id": "23D2",
+      "name": "Product 23",
+      "description": "This is a discription for this product",
+      "price": 66,
+      "img": "https://images.pexels.com/photos/13867156/pexels-photo-13867156.jpeg?cs=srgb&dl=pexels-studio-naae-13867156.jpg&fm=jpg&w=140&h=153",
+      "size": "38",
+      "color": "white",
+      "brand": "Nike"
+    },
+    {
+      "id": "24D2",
+      "name": "Product 24",
+      "description": "This is a discription for this product",
+      "price": 77,
+      "img": "https://images.pexels.com/photos/13867156/pexels-photo-13867156.jpeg?cs=srgb&dl=pexels-studio-naae-13867156.jpg&fm=jpg&w=140&h=153",
+      "size": "38",
+      "color": "Black",
+      "brand": "Nike"
     }
   ]
 }
