@@ -71,7 +71,7 @@ interface Filters {
   maxPrice: number;
   inStock: boolean;
   color: string[];
-  brand: string
+  brand: string[]
 }
 const ProductList: React.FC = () => {
   const [products, setProducts] = useState<ApiResponse[]>([]);
@@ -85,14 +85,30 @@ const ProductList: React.FC = () => {
     maxPrice: 100,
     inStock: false,
     color: [],
-    brand: "",
+    brand: []
   });
 
-  const handleFiltersChange = (
-    event: SelectChangeEvent<string[]>
-  ) => {
+
+  const handleFiltersChange = (event: SelectChangeEvent<string[]>) => {
     const { name, value } = event.target;
     setFilters({ ...filters, [name]: value });
+  };
+
+
+
+
+  const handleMinPriceChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const { value } = event.target;
+    setFilters({ ...filters, minPrice: Number(value) });
+  };
+
+  const handleMaxPriceChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const { value } = event.target;
+    setFilters({ ...filters, maxPrice: Number(value) });
   };
 
   useEffect(() => {
@@ -132,14 +148,14 @@ const ProductList: React.FC = () => {
                 name="minPrice"
                 type="number"
                 value={filters.minPrice}
-                onChange={handleFiltersChange}
+                onChange={handleMinPriceChange}
               />
               <TextField
                 label="Maximum Price"
                 name="maxPrice"
                 type="number"
                 value={filters.maxPrice}
-                onChange={handleFiltersChange}
+                onChange={handleMaxPriceChange}
               />
             </Item>
             <Item>
@@ -196,17 +212,17 @@ const ProductList: React.FC = () => {
             </Item>
             <Item>
               <FormControl sx={{ width: 300 }}>
-                <InputLabel id="brands">Brands</InputLabel>
+                <InputLabel id="brand">Brands</InputLabel>
                 <Select
-                  labelId="brands"
+                  labelId="brand"
                   value={filters.brand}
                   name="brand"
                   onChange={handleFiltersChange}>
                   <MenuItem value="">
                     <em>all</em>
                   </MenuItem>
-                  {productsBrand.map((brands) => (
-                    <MenuItem value={brands} key={brands}>{brands}</MenuItem>
+                  {productsBrand.map((brand) => (
+                    <MenuItem value={brand} key={brand}>{brand}</MenuItem>
                   ))}
                 </Select>
               </FormControl>
@@ -251,4 +267,4 @@ const ProductList: React.FC = () => {
   );
 };
 
-export default ProductList;
+export default ProductList
