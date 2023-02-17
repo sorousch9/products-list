@@ -4,32 +4,28 @@ import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Unstable_Grid2";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import ListItemText from "@mui/material/ListItemText";
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Select ,{ SelectChangeEvent } from '@mui/material/Select';
 import Checkbox from "@mui/material/Checkbox";
 import Slider from "@mui/material/Slider";
 import Typography from "@mui/material/Typography";
 import { Stack } from "@mui/system";
 import { FormControlLabel, Switch } from "@mui/material";
+import TextField from '@mui/material/TextField';
 
-interface ProductT {
+interface ApiResponse {
   id: string;
   name: string;
   description: string;
   price: number;
   img: string;
+  inStock: boolean
 }
-// Price
-function pricetext(price: number) {
-  return `${price} €`;
-}
-const minDistance = 10;
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -57,70 +53,69 @@ const productsColorFilter = [
   "red",
   "yellow",
   "green",
-  "perple",
+  "perple"
 ];
 const productsBrand = [
   "Nike",
   "Puma",
   "Reebok",
-  "Adidas ",
+  "Adidas",
   "Armani",
-  "BOSS",
+  "BOSS"
 ];
 
+
+interface Filters {
+  size: string[];
+  minPrice: number;
+  maxPrice: number;
+  inStock: boolean;
+  color: string[];
+  brand: string
+}
 const ProductList: React.FC = () => {
-  const [products, setProducts] = useState<ProductT[]>([]);
-  const [productPrice, setProductPrice] = useState<number[]>([0, 100]);
-  const [productSize, setProductSize] = useState<string[]>([]);
-  const [productColor, setProductColor] = useState<string[]>([]);
-  const [brands, setBrands] = useState("");
+  const [products, setProducts] = useState<ApiResponse[]>([]);
+  /*   const [productPrice, setProductPrice] = useState<number[]>([0, 100]);
+    const [productSize, setProductSize] = useState<string[]>([]);
+    const [productColor, setProductColor] = useState<string[]>([]);
+    const [brands, setBrands] = useState(""); */
+  const [filters, setFilters] = useState<Filters>({
+    size: [],
+    minPrice: 0,
+    maxPrice: 100,
+    inStock: false,
+    color: [],
+    brand: "",
+  });
 
-  console.log(productPrice);
-  useEffect(() => {
-    axios.get("http://localhost:3004/products").then((response) => {
-      setProducts(response.data);
-    });
-  }, []);
-  // console.log(products);
-  const handleChange = (event: any) => {
-    const {
-      target: { value },
-    } = event;
-    if (event.target.name === "price") {
-      setProductColor(typeof value === "string" ? value.split(",") : value);
-    }
-    if (event.target.name === "size") {
-      setProductSize(typeof value === "string" ? value.split(",") : value);
-    }
-    console.log(event.target);
-  };
-
-  // Price Filter
-
-  const handleChangeprice = (
-    event: Event,
-    newPrice: number | number[],
-    activeThumb: number
+  const handleFiltersChange = (
+    event: SelectChangeEvent<string[]>
   ) => {
-    if (!Array.isArray(newPrice)) {
-      return;
+    const { name, value } = event.target;
+    setFilters({ ...filters, [name]: value });
+  };
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const url = new URL(
+          "http://localhost:3004/products"
+        );
+        url.searchParams.set('filters', JSON.stringify(filters ?? []));
+        const response = await fetch(url.href);
+        const json = await response.json();
+        console.log(json);
+        setProducts(json);
+        return json;
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setProducts([]);
+      }
     }
 
-    if (activeThumb === 0) {
-      setProductPrice([
-        Math.min(newPrice[0], productPrice[1] - minDistance),
-        productPrice[1],
-      ]);
-    } else {
-      setProductPrice([
-        productPrice[0],
-        Math.max(newPrice[1], productPrice[0] + minDistance),
-      ]);
-    }
-  };
-  const handleChangeBrands = (event: SelectChangeEvent) => {
-    setBrands(event.target.value);
-  };
+    fetchData();
+  }, [filters]);
+
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -132,13 +127,19 @@ const ProductList: React.FC = () => {
           <Stack spacing={2}>
             <Item sx={{ paddingRight: "7rem", paddingLeft: "7rem" }}>
               <Typography gutterBottom>Price</Typography>
-              <Slider
-                getAriaLabel={() => "Minimum distance shift"}
-                valueLabelDisplay="on"
-                value={productPrice}
-                onChange={handleChangeprice}
-                getAriaValueText={pricetext}
-                disableSwap
+              <TextField
+                label="Minimum Price"
+                name="minPrice"
+                type="number"
+                value={filters.minPrice}
+                onChange={handleFiltersChange}
+              />
+              <TextField
+                label="Maximum Price"
+                name="maxPrice"
+                type="number"
+                value={filters.maxPrice}
+                onChange={handleFiltersChange}
               />
             </Item>
             <Item>
@@ -148,16 +149,14 @@ const ProductList: React.FC = () => {
                   labelId="demo-multiple-checkbox-label"
                   id="demo-multiple-checkbox"
                   multiple
-                  name="price"
-                  value={productSize}
-                  onChange={handleChange}
-                  input={<OutlinedInput label="Size" />}
-                  renderValue={(selected) => selected.join(", ")}
+                  name="size"
+                  value={filters.size}
+                  onChange={handleFiltersChange}
                   MenuProps={MenuProps}
                 >
                   {productsSizeFilter.map((product) => (
                     <MenuItem key={product} value={product}>
-                      <Checkbox checked={productSize.indexOf(product) > -1} />
+                      <Checkbox checked={filters.size.indexOf(product) > -1} />
                       <ListItemText primary={product} />
                     </MenuItem>
                   ))}
@@ -172,16 +171,15 @@ const ProductList: React.FC = () => {
                   labelId="demo-multiple-checkbox-label"
                   id="demo-multiple-checkbox"
                   multiple
-                  name="Color"
-                  value={productColor}
-                  onChange={handleChange}
+                  name="color"
+                  value={filters.color}
+                  onChange={handleFiltersChange}
                   input={<OutlinedInput label="Color" />}
-                  renderValue={(selected) => selected.join(", ")}
                   MenuProps={MenuProps}
                 >
                   {productsColorFilter.map((product) => (
                     <MenuItem key={product} value={product}>
-                      <Checkbox checked={productColor.indexOf(product) > -1} />
+                      <Checkbox checked={filters.color.indexOf(product) > -1} />
                       <ListItemText primary={product} />
                     </MenuItem>
                   ))}
@@ -201,12 +199,11 @@ const ProductList: React.FC = () => {
                 <InputLabel id="brands">Brands</InputLabel>
                 <Select
                   labelId="brands"
-                  value={brands}
-                  label="brands"
-                  onChange={handleChangeBrands}
-                  renderValue={(value) => `${value}`}>
+                  value={filters.brand}
+                  name="brand"
+                  onChange={handleFiltersChange}>
                   <MenuItem value="">
-                    <em>None</em>
+                    <em>all</em>
                   </MenuItem>
                   {productsBrand.map((brands) => (
                     <MenuItem value={brands} key={brands}>{brands}</MenuItem>
