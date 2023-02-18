@@ -10,13 +10,14 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import ListItemText from "@mui/material/ListItemText";
-import Select ,{ SelectChangeEvent } from '@mui/material/Select';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
 import Checkbox from "@mui/material/Checkbox";
 import Slider from "@mui/material/Slider";
 import Typography from "@mui/material/Typography";
 import { Stack } from "@mui/system";
 import { FormControlLabel, Switch } from "@mui/material";
 import TextField from '@mui/material/TextField';
+import axios from "axios";
 
 interface ApiResponse {
   id: string;
@@ -75,15 +76,11 @@ interface Filters {
 }
 const ProductList: React.FC = () => {
   const [products, setProducts] = useState<ApiResponse[]>([]);
-  /*   const [productPrice, setProductPrice] = useState<number[]>([0, 100]);
-    const [productSize, setProductSize] = useState<string[]>([]);
-    const [productColor, setProductColor] = useState<string[]>([]);
-    const [brands, setBrands] = useState(""); */
   const [filters, setFilters] = useState<Filters>({
     size: [],
     minPrice: 0,
     maxPrice: 100,
-    inStock: false,
+    inStock: true,
     color: [],
     brand: []
   });
@@ -93,10 +90,6 @@ const ProductList: React.FC = () => {
     const { name, value } = event.target;
     setFilters({ ...filters, [name]: value });
   };
-
-
-
-
   const handleMinPriceChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
@@ -111,25 +104,31 @@ const ProductList: React.FC = () => {
     setFilters({ ...filters, maxPrice: Number(value) });
   };
 
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const url = new URL(
-          "http://localhost:3004/products"
-        );
-        url.searchParams.set('filters', JSON.stringify(filters ?? []));
-        const response = await fetch(url.href);
-        const json = await response.json();
-        console.log(json);
-        setProducts(json);
-        return json;
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        setProducts([]);
-      }
-    }
 
-    fetchData();
+  const handleChange = (event: SelectChangeEvent<string[]>) => {
+    const { name, value } = event.target;
+
+    const newFilters = name === 'brands' ? { ...filters, [name]: Array.isArray(value) ? value : [value] } : { ...filters, [name]: value };
+
+    setFilters(newFilters);
+  };
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const params = new URLSearchParams();
+
+      Object.entries(filters).forEach(([key, value]) => {
+        if (Array.isArray(value)) {
+          value.forEach((v) => params.append(key, v));
+        } else {
+          params.append(key, value);
+        }
+      });
+
+      const response = await axios.get<ApiResponse[]>(`http://localhost:3004/products?${params.toString()}`);
+      setProducts(response.data);
+    };
+
+    fetchProducts();
   }, [filters]);
 
 
@@ -217,7 +216,8 @@ const ProductList: React.FC = () => {
                   labelId="brand"
                   value={filters.brand}
                   name="brand"
-                  onChange={handleFiltersChange}>
+                  multiple
+                  onChange={handleChange}>
                   <MenuItem value="">
                     <em>all</em>
                   </MenuItem>
