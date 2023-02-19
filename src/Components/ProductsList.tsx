@@ -68,8 +68,8 @@ const productsBrand = [
 
 interface Filters {
   size: string[];
-  minPrice: number;
-  maxPrice: number;
+  price_gte: number;
+  price_lte: number;
   inStock: boolean;
   color: string[];
   brand: string[]
@@ -78,13 +78,13 @@ const ProductList: React.FC = () => {
   const [products, setProducts] = useState<ApiResponse[]>([]);
   const [filters, setFilters] = useState<Filters>({
     size: [],
-    minPrice: 0,
-    maxPrice: 100,
+    price_gte: 0,
+    price_lte: 100,
     inStock: true,
     color: [],
     brand: []
   });
-
+console.log(filters)
 
   const handleFiltersChange = (event: SelectChangeEvent<string[]>) => {
     const { name, value } = event.target;
@@ -94,24 +94,17 @@ const ProductList: React.FC = () => {
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     const { value } = event.target;
-    setFilters({ ...filters, minPrice: Number(value) });
+    setFilters({ ...filters, price_gte: Number(value) });
   };
 
   const handleMaxPriceChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     const { value } = event.target;
-    setFilters({ ...filters, maxPrice: Number(value) });
+    setFilters({ ...filters, price_lte: Number(value) });
   };
 
 
-  const handleChange = (event: SelectChangeEvent<string[]>) => {
-    const { name, value } = event.target;
-
-    const newFilters = name === 'brands' ? { ...filters, [name]: Array.isArray(value) ? value : [value] } : { ...filters, [name]: value };
-
-    setFilters(newFilters);
-  };
   useEffect(() => {
     const fetchProducts = async () => {
       const params = new URLSearchParams();
@@ -146,14 +139,14 @@ const ProductList: React.FC = () => {
                 label="Minimum Price"
                 name="minPrice"
                 type="number"
-                value={filters.minPrice}
+                value={filters.price_gte}
                 onChange={handleMinPriceChange}
               />
               <TextField
                 label="Maximum Price"
                 name="maxPrice"
                 type="number"
-                value={filters.maxPrice}
+                value={filters.price_lte}
                 onChange={handleMaxPriceChange}
               />
             </Item>
@@ -203,9 +196,9 @@ const ProductList: React.FC = () => {
             </Item>
             <Item>
               <FormControlLabel
-                value="Action"
+                value={filters.inStock}
                 control={<Switch color="primary" />}
-                label="Action"
+                label="in Stock"
                 labelPlacement="start"
               />
             </Item>
@@ -217,7 +210,7 @@ const ProductList: React.FC = () => {
                   value={filters.brand}
                   name="brand"
                   multiple
-                  onChange={handleChange}>
+                  onChange={handleFiltersChange}>
                   <MenuItem value="">
                     <em>all</em>
                   </MenuItem>
