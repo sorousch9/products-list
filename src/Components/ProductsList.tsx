@@ -70,7 +70,7 @@ interface Filters {
   size: string[];
   price_gte: number;
   price_lte: number;
-  inStock: boolean;
+  inStock: boolean ;
   color: string[];
   brand: string[]
 }
@@ -104,6 +104,8 @@ console.log(filters)
     setFilters({ ...filters, price_lte: Number(value) });
   };
 
+  const handleInStockChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setFilters({...filters,inStock:Boolean(event.target.checked)})}
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -197,7 +199,8 @@ console.log(filters)
             <Item>
               <FormControlLabel
                 value={filters.inStock}
-                control={<Switch color="primary" />}
+                name="inStock"
+                control={<Switch name="inStock" checked={filters.inStock} onChange={handleInStockChange} color="primary" />}
                 label="in Stock"
                 labelPlacement="start"
               />
@@ -224,7 +227,7 @@ console.log(filters)
           </Stack>
         </Grid>
         <Grid container xs={12} md={7} lg={8} spacing={4}>
-          {products.map((product) => (
+          {products.filter(product => filters.inStock === null || !filters.inStock || product.inStock).map((product) => (
             <Grid xs={6} lg={3} key={product.id}>
               <Box component="ul" aria-labelledby="category-a" sx={{ pl: 2 }}>
                 <Product product={product} key={product.id} />
