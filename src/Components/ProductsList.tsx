@@ -73,7 +73,7 @@ interface Filters {
 }
 const ProductList: React.FC = () => {
   const [products, setProducts] = useState<ApiResponse[]>([]);
-  const [countPrdoducts, setCountPrdoducts] = useState(10);
+  const [countPrdoducts, setCountPrdoducts] = useState(12);
   const [filters, setFilters] = useState<Filters>({
     size: [],
     price_gte: 0,
@@ -240,25 +240,20 @@ const ProductList: React.FC = () => {
           </Stack>
         </Grid>
         <Grid container xs={12} md={7} lg={8} spacing={4}>
-          {products
-            .filter(
-              (product) =>
-                filters.inStock === null || !filters.inStock || product.inStock
-            )
-            .map((product) => (
-              <Grid xs={6} lg={3} key={product.id}>
-                <Box component="ul" aria-labelledby="category-a" sx={{ pl: 2 }}>
-                  <Product product={product} key={product.id} />
-                </Box>
-              </Grid>
-            ))}
-          <Stack>
+          {products.map((product) => (
+            <Grid xs={6} lg={3} key={product.id}>
+              <Box component="ul" aria-labelledby="category-a" sx={{ pl: 2 }}>
+                <Product product={product} key={product.id} />
+              </Box>
+            </Grid>
+          ))}
+          <Grid container xs={12} md={12} lg={12} spacing={4}  justifyContent="center">
             <Pagination
+              sx={{ justifyContent: "center" }}
               page={pageNumber}
-              count={
-                countPrdoducts  < 10 ? 1 : countPrdoducts / pageLimit
-              }
+              count={countPrdoducts < 10 ? 1 : countPrdoducts / pageLimit}
               renderItem={(item) => (
+               
                 <PaginationItem
                   component={Link}
                   to={`/${item.page === 1 ? "" : `?page=${item.page}`}`}
@@ -266,7 +261,7 @@ const ProductList: React.FC = () => {
                 />
               )}
             />
-          </Stack>
+          </Grid>
         </Grid>
 
         <Grid
