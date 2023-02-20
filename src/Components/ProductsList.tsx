@@ -1,22 +1,30 @@
 import Product from "./Product";
-import { styled } from "@mui/material/styles";
-import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
-import Grid from "@mui/material/Unstable_Grid2";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import OutlinedInput from "@mui/material/OutlinedInput";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import ListItemText from "@mui/material/ListItemText";
-import Select, { SelectChangeEvent } from '@mui/material/Select';
-import Checkbox from "@mui/material/Checkbox";
-import Slider from "@mui/material/Slider";
-import Typography from "@mui/material/Typography";
-import { Stack } from "@mui/system";
-import { FormControlLabel, Switch } from "@mui/material";
-import TextField from '@mui/material/TextField';
+import {
+  Link,
+  useLocation,
+} from "react-router-dom";
+import Grid from "@mui/material/Unstable_Grid2";
+import {
+  ListItemText,
+  SelectChangeEvent,
+  Paper,
+  styled,
+  Box,
+  FormControl,
+  OutlinedInput,
+  InputLabel,
+  MenuItem,
+  Select,
+  FormControlLabel,
+  Stack,
+  Switch,
+  Typography,
+  Checkbox,
+  TextField,
+  Pagination,
+  PaginationItem,
+} from "@mui/material";
 import axios from "axios";
 
 interface ApiResponse {
@@ -25,7 +33,7 @@ interface ApiResponse {
   description: string;
   price: number;
   img: string;
-  inStock: boolean
+  inStock: boolean;
 }
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -54,25 +62,17 @@ const productsColorFilter = [
   "red",
   "yellow",
   "green",
-  "perple"
+  "perple",
 ];
-const productsBrand = [
-  "Nike",
-  "Puma",
-  "Reebok",
-  "Adidas",
-  "Armani",
-  "BOSS"
-];
-
+const productsBrand = ["Nike", "Puma", "Reebok", "Adidas", "Armani", "BOSS"];
 
 interface Filters {
   size: string[];
   price_gte: number;
   price_lte: number;
-  inStock: boolean ;
+  inStock: boolean;
   color: string[];
-  brand: string[]
+  brand: string[];
 }
 const ProductList: React.FC = () => {
   const [products, setProducts] = useState<ApiResponse[]>([]);
@@ -82,30 +82,32 @@ const ProductList: React.FC = () => {
     price_lte: 100,
     inStock: true,
     color: [],
-    brand: []
+    brand: [],
   });
-console.log(filters)
+
+  const location = useLocation();
+  const query = new URLSearchParams(location.search);
+  const pageNumber = parseInt(query.get("page") || "1", 10);
+
+  let pageLimit :number = 10
 
   const handleFiltersChange = (event: SelectChangeEvent<string[]>) => {
     const { name, value } = event.target;
     setFilters({ ...filters, [name]: value });
   };
-  const handleMinPriceChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
+  const handleMinPriceChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
     setFilters({ ...filters, price_gte: Number(value) });
   };
 
-  const handleMaxPriceChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
+  const handleMaxPriceChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
     setFilters({ ...filters, price_lte: Number(value) });
   };
 
   const handleInStockChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setFilters({...filters,inStock:Boolean(event.target.checked)})}
+    setFilters({ ...filters, inStock: Boolean(event.target.checked) });
+  };
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -119,13 +121,14 @@ console.log(filters)
         }
       });
 
-      const response = await axios.get<ApiResponse[]>(`http://localhost:3004/products?${params.toString()}`);
+      const response = await axios.get<ApiResponse[]>(
+        `http://localhost:3004/products?_page=${pageNumber}&_limit=${pageLimit}&${params.toString()}`
+      );
       setProducts(response.data);
     };
 
     fetchProducts();
-  }, [filters]);
-
+  }, [filters,pageNumber,pageLimit]);
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -163,6 +166,7 @@ console.log(filters)
                   value={filters.size}
                   onChange={handleFiltersChange}
                   MenuProps={MenuProps}
+                  input={<OutlinedInput label="Size" />}
                 >
                   {productsSizeFilter.map((product) => (
                     <MenuItem key={product} value={product}>
@@ -200,7 +204,14 @@ console.log(filters)
               <FormControlLabel
                 value={filters.inStock}
                 name="inStock"
-                control={<Switch name="inStock" checked={filters.inStock} onChange={handleInStockChange} color="primary" />}
+                control={
+                  <Switch
+                    checked={filters.inStock}
+                    name="inStock"
+                    onChange={handleInStockChange}
+                    color="primary"
+                  />
+                }
                 label="in Stock"
                 labelPlacement="start"
               />
@@ -213,28 +224,50 @@ console.log(filters)
                   value={filters.brand}
                   name="brand"
                   multiple
-                  onChange={handleFiltersChange}>
+                  input={<OutlinedInput label="Brand" />}
+                  onChange={handleFiltersChange}
+                >
                   <MenuItem value="">
                     <em>all</em>
                   </MenuItem>
                   {productsBrand.map((brand) => (
-                    <MenuItem value={brand} key={brand}>{brand}</MenuItem>
+                    <MenuItem value={brand} key={brand}>
+                      {brand}
+                    </MenuItem>
                   ))}
                 </Select>
               </FormControl>
             </Item>
-
           </Stack>
         </Grid>
         <Grid container xs={12} md={7} lg={8} spacing={4}>
-          {products.filter(product => filters.inStock === null || !filters.inStock || product.inStock).map((product) => (
-            <Grid xs={6} lg={3} key={product.id}>
-              <Box component="ul" aria-labelledby="category-a" sx={{ pl: 2 }}>
-                <Product product={product} key={product.id} />
-              </Box>
-            </Grid>
-          ))}
+          {products
+            .filter(
+              (product) =>
+                filters.inStock === null || !filters.inStock || product.inStock
+            )
+            .map((product) => (
+              <Grid xs={6} lg={3} key={product.id}>
+                <Box component="ul" aria-labelledby="category-a" sx={{ pl: 2 }}>
+                  <Product product={product} key={product.id} />
+                </Box>
+              </Grid>
+            ))}
+          <Stack>
+            <Pagination
+              page={pageNumber}
+              count={10}
+              renderItem={(item) => (
+                <PaginationItem
+                  component={Link}
+                  to={`/${item.page === 1 ? "" : `?page=${item.page}`}`}
+                  {...item}
+                />
+              )}
+            />
+          </Stack>
         </Grid>
+
         <Grid
           xs={12}
           container
@@ -246,21 +279,10 @@ console.log(filters)
           <Grid sx={{ order: { xs: 2, sm: 1 } }}>
             <Item>© Copyright</Item>
           </Grid>
-          <Grid container columnSpacing={1} sx={{ order: { xs: 1, sm: 2 } }}>
-            <Grid>
-              <Link to={"/"}>Link A</Link>
-            </Grid>
-            <Grid>
-              <Link to={"/"}>Link B</Link>
-            </Grid>
-            <Grid>
-              <Link to={"/"}>Link C</Link>
-            </Grid>
-          </Grid>
         </Grid>
       </Grid>
     </Box>
   );
 };
 
-export default ProductList
+export default ProductList;
