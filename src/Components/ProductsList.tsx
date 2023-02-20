@@ -1,9 +1,6 @@
 import Product from "./Product";
 import { useEffect, useState } from "react";
-import {
-  Link,
-  useLocation,
-} from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Grid from "@mui/material/Unstable_Grid2";
 import {
   ListItemText,
@@ -76,6 +73,7 @@ interface Filters {
 }
 const ProductList: React.FC = () => {
   const [products, setProducts] = useState<ApiResponse[]>([]);
+  const [countPrdoducts, setCountPrdoducts] = useState(10);
   const [filters, setFilters] = useState<Filters>({
     size: [],
     price_gte: 0,
@@ -89,7 +87,7 @@ const ProductList: React.FC = () => {
   const query = new URLSearchParams(location.search);
   const pageNumber = parseInt(query.get("page") || "1", 10);
 
-  let pageLimit :number = 10
+  let pageLimit: number = 10;
 
   const handleFiltersChange = (event: SelectChangeEvent<string[]>) => {
     const { name, value } = event.target;
@@ -125,10 +123,11 @@ const ProductList: React.FC = () => {
         `http://localhost:3004/products?_page=${pageNumber}&_limit=${pageLimit}&${params.toString()}`
       );
       setProducts(response.data);
+      setCountPrdoducts(response.headers["x-total-count"]);
     };
 
     fetchProducts();
-  }, [filters,pageNumber,pageLimit]);
+  }, [filters, pageNumber, pageLimit]);
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -256,7 +255,9 @@ const ProductList: React.FC = () => {
           <Stack>
             <Pagination
               page={pageNumber}
-              count={10}
+              count={
+                countPrdoducts  < 10 ? 1 : countPrdoducts / pageLimit
+              }
               renderItem={(item) => (
                 <PaginationItem
                   component={Link}

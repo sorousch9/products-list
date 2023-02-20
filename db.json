@@ -46,7 +46,7 @@
     },
     {
       "id": "5D2",
-      "name": "Product5",
+      "name": "Product 5",
       "description": "This is a discription for this product",
       "price": 100,
       "img": "https://images.pexels.com/photos/13867156/pexels-photo-13867156.jpeg?cs=srgb&dl=pexels-studio-naae-13867156.jpg&fm=jpg&w=140&h=153",
@@ -118,7 +118,7 @@
       "img": "https://images.pexels.com/photos/13867156/pexels-photo-13867156.jpeg?cs=srgb&dl=pexels-studio-naae-13867156.jpg&fm=jpg&w=140&h=153",
       "size": "38",
       "color": "Black",
-      "inStock":false,
+      "inStock":true,
       "brand": "Adidas"
     },
     {
