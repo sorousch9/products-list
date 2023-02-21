@@ -16,7 +16,6 @@ import {
   FormControlLabel,
   Stack,
   Switch,
-  Typography,
   Checkbox,
   TextField,
   Pagination,
@@ -31,6 +30,9 @@ interface ApiResponse {
   price: number;
   img: string;
   inStock: boolean;
+  brand: string;
+  color: string;
+  size: string;
 }
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -71,9 +73,10 @@ interface Filters {
   color: string[];
   brand: string[];
 }
-const ProductList: React.FC = () => {
+
+const ProductList: React.FC= () => {
   const [products, setProducts] = useState<ApiResponse[]>([]);
-  const [countPrdoducts, setCountPrdoducts] = useState(12);
+  const [countPrdoducts, setCountPrdoducts] = useState(10);
   const [filters, setFilters] = useState<Filters>({
     size: [],
     price_gte: 0,
@@ -129,11 +132,10 @@ const ProductList: React.FC = () => {
     fetchProducts();
   }, [filters, pageNumber, pageLimit]);
 
-
   const totalPage = +(
     countPrdoducts < 10 ? 1 : countPrdoducts / pageLimit
   ).toFixed();
-
+  console.log(products)
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
@@ -144,7 +146,7 @@ const ProductList: React.FC = () => {
           <Stack spacing={2}>
             <Item>
               <TextField
-              sx={{paddingRight:".5rem",marginTop:".7rem"}}
+                sx={{ paddingRight: ".5rem", marginTop: ".7rem" }}
                 label="Minimum Price"
                 name="minPrice"
                 type="number"
@@ -152,7 +154,7 @@ const ProductList: React.FC = () => {
                 onChange={handleMinPriceChange}
               />
               <TextField
-              sx={{paddingRight:".5rem",marginTop:".7rem"}}
+                sx={{ paddingRight: ".5rem", marginTop: ".7rem" }}
                 label="Maximum Price"
                 name="maxPrice"
                 type="number"
@@ -246,10 +248,10 @@ const ProductList: React.FC = () => {
           </Stack>
         </Grid>
         <Grid container xs={12} md={7} lg={8} spacing={4}>
-          {products.map((product) => (
-            <Grid xs={6} lg={4} xl={3} key={product.id}>
+          {products.map((item) => (
+            <Grid xs={6} lg={4} xl={3} key={item.id}>
               <Box component="ul" aria-labelledby="category-a" sx={{ pl: 0 }}>
-                <Product product={product} key={product.id} />
+                <Product product={item} key={item.id} />
               </Box>
             </Grid>
           ))}

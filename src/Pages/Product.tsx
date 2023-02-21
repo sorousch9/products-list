@@ -1,11 +1,12 @@
-import { styled } from "@mui/material/styles";
-import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Unstable_Grid2";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
 import {
+  Select,
+  SelectChangeEvent,
   Button,
+  Paper,
   Card,
+  Box,
+  styled,
   CardMedia,
   FormControl,
   FormHelperText,
@@ -18,8 +19,22 @@ import { blueGrey } from "@mui/material/colors";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import ShareIcon from "@mui/icons-material/Share";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Stack } from "@mui/system";
+import axios from "axios";
+import { useParams } from "react-router-dom";
+interface ProductT {
+  id: string;
+  name: string;
+  description: string;
+  price: number;
+  img: string;
+  inStock: boolean;
+  brand: string;
+  color: string;
+  size: string;
+}
+
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
   ...theme.typography.body2,
@@ -27,9 +42,24 @@ const Item = styled(Paper)(({ theme }) => ({
   textAlign: "center",
   color: theme.palette.text.secondary,
 }));
-const Product = () => {
+const Product: React.FC = () => {
+  const { id } = useParams<{ id: string }>();
+  const [product, setProduct] = useState<ProductT | null>(null);
   const [value, setValue] = useState("");
   const [value2, setValue2] = useState("");
+
+  useEffect(() => {
+    axios
+      .get<ProductT>(`http://localhost:3004/products/${id}`)
+      .then((response) => {
+        setProduct(response.data);
+      });
+  }, [id]);
+
+  if (!product) {
+    return <div>Loading...</div>;
+  }
+  console.log(product)
 
   const handleChange = (event: SelectChangeEvent) => {
     setValue(event.target.value);
@@ -55,7 +85,7 @@ const Product = () => {
         <Grid xs md>
           <Stack direction="column" justifyContent="space-around" spacing={2}>
             <Item>
-              <Typography variant="h4">Product Name</Typography>
+              <Typography variant="h4">name</Typography>
               <Typography gutterBottom>Brand Name</Typography>
             </Item>
             <Item>

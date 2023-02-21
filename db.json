@@ -8,7 +8,7 @@
       "img": "https://images.pexels.com/photos/2697787/pexels-photo-2697787.jpeg?auto=compress&cs=tinysrgb&w=1600",
       "size": "38",
       "color": "Black",
-      "inStock":true,
+      "inStock": true,
       "brand": "Nike"
     },
     {
@@ -19,7 +19,7 @@
       "img": "https://images.pexels.com/photos/12564670/pexels-photo-12564670.jpeg?auto=compress&cs=tinysrgb&w=1600",
       "size": "39",
       "color": "white",
-      "inStock":true,
+      "inStock": true,
       "brand": "Puma"
     },
     {
@@ -30,7 +30,7 @@
       "img": "https://images.pexels.com/photos/4464488/pexels-photo-4464488.jpeg?auto=compress&cs=tinysrgb&w=1600",
       "size": "40",
       "color": "Black",
-      "inStock":true,
+      "inStock": true,
       "brand": "Reebok"
     },
     {
@@ -41,7 +41,7 @@
       "img": "https://images.pexels.com/photos/6666403/pexels-photo-6666403.jpeg?auto=compress&cs=tinysrgb&w=1600",
       "size": "40",
       "color": "perple",
-      "inStock":true,
+      "inStock": true,
       "brand": "Nike"
     },
     {
@@ -52,7 +52,7 @@
       "img": "https://images.pexels.com/photos/3989394/pexels-photo-3989394.jpeg?auto=compress&cs=tinysrgb&w=1600",
       "size": "48",
       "color": "Black",
-      "inStock":true,
+      "inStock": true,
       "brand": "Nike"
     },
     {
@@ -63,7 +63,7 @@
       "img": "https://images.pexels.com/photos/11124443/pexels-photo-11124443.jpeg?auto=compress&cs=tinysrgb&w=1600",
       "size": "38",
       "color": "green",
-      "inStock":true,
+      "inStock": true,
       "brand": "Reebok"
     },
     {
@@ -74,7 +74,7 @@
       "img": "https://images.pexels.com/photos/14005916/pexels-photo-14005916.jpeg?auto=compress&cs=tinysrgb&w=1600",
       "size": "38",
       "color": "Black",
-      "inStock":true,
+      "inStock": true,
       "brand": "Reebok"
     },
     {
@@ -85,7 +85,7 @@
       "img": "https://images.pexels.com/photos/13080823/pexels-photo-13080823.jpeg?auto=compress&cs=tinysrgb&w=600",
       "size": "38",
       "color": "red",
-      "inStock":true,
+      "inStock": true,
       "brand": "Adidas"
     },
     {
@@ -96,7 +96,7 @@
       "img": "https://images.pexels.com/photos/6716444/pexels-photo-6716444.jpeg?auto=compress&cs=tinysrgb&w=1600",
       "size": "38",
       "color": "white",
-      "inStock":true,
+      "inStock": true,
       "brand": "Armani"
     },
     {
@@ -107,7 +107,7 @@
       "img": "https://images.pexels.com/photos/9096975/pexels-photo-9096975.jpeg?auto=compress&cs=tinysrgb&w=1600",
       "size": "38",
       "color": "Black",
-      "inStock":true,
+      "inStock": true,
       "brand": "BOSS"
     },
     {
@@ -118,7 +118,7 @@
       "img": "https://images.pexels.com/photos/3568518/pexels-photo-3568518.jpeg?auto=compress&cs=tinysrgb&w=1600",
       "size": "38",
       "color": "Black",
-      "inStock":true,
+      "inStock": true,
       "brand": "Adidas"
     },
     {
@@ -129,7 +129,7 @@
       "img": "https://images.pexels.com/photos/3373722/pexels-photo-3373722.jpeg?auto=compress&cs=tinysrgb&w=600",
       "size": "38",
       "color": "yellow",
-      "inStock":true,
+      "inStock": true,
       "brand": "Puma"
     },
     {
@@ -140,7 +140,7 @@
       "img": "https://images.pexels.com/photos/3373722/pexels-photo-3373722.jpeg?auto=compress&cs=tinysrgb&w=600",
       "size": "38",
       "color": "yellow",
-      "inStock":false,
+      "inStock": false,
       "brand": "Adidas"
     },
     {
@@ -151,7 +151,7 @@
       "img": "https://images.pexels.com/photos/7319324/pexels-photo-7319324.jpeg?auto=compress&cs=tinysrgb&w=600",
       "size": "38",
       "color": "red",
-      "inStock":true,
+      "inStock": true,
       "brand": "Nike"
     },
     {
@@ -162,7 +162,7 @@
       "img": "https://images.pexels.com/photos/9878682/pexels-photo-9878682.jpeg?auto=compress&cs=tinysrgb&w=600",
       "size": "38",
       "color": "red",
-      "inStock":true,
+      "inStock": true,
       "brand": "BOSS"
     },
     {
@@ -173,7 +173,7 @@
       "img": "https://images.pexels.com/photos/14997965/pexels-photo-14997965.jpeg?auto=compress&cs=tinysrgb&w=1600",
       "size": "38",
       "color": "Black",
-      "inStock":false,
+      "inStock": false,
       "brand": "Nike"
     },
     {
@@ -184,7 +184,7 @@
       "img": "https://images.pexels.com/photos/10046264/pexels-photo-10046264.jpeg?auto=compress&cs=tinysrgb&w=1600",
       "size": "38",
       "color": "perple",
-      "inStock":true,
+      "inStock": true,
       "brand": "Reebok"
     },
     {
@@ -195,7 +195,7 @@
       "img": "https://images.pexels.com/photos/5582621/pexels-photo-5582621.jpeg?auto=compress&cs=tinysrgb&w=1600",
       "size": "38",
       "color": "perple",
-      "inStock":true,
+      "inStock": true,
       "brand": "Nike"
     },
     {
@@ -206,7 +206,7 @@
       "img": "https://images.pexels.com/photos/12486665/pexels-photo-12486665.jpeg?auto=compress&cs=tinysrgb&w=1600",
       "size": "38",
       "color": "perple",
-      "inStock":true,
+      "inStock": true,
       "brand": "BOSS"
     },
     {
@@ -217,7 +217,7 @@
       "img": "https://images.pexels.com/photos/13583359/pexels-photo-13583359.jpeg?auto=compress&cs=tinysrgb&w=1600",
       "size": "38",
       "color": "Black",
-      "inStock":false,
+      "inStock": false,
       "brand": "Nike"
     },
     {
@@ -228,7 +228,7 @@
       "img": "https://images.pexels.com/photos/8103079/pexels-photo-8103079.jpeg?auto=compress&cs=tinysrgb&w=1600",
       "size": "38",
       "color": "green",
-      "inStock":true,
+      "inStock": true,
       "brand": "Puma"
     },
     {
@@ -239,7 +239,7 @@
       "img": "https://images.pexels.com/photos/5912001/pexels-photo-5912001.jpeg?auto=compress&cs=tinysrgb&w=1600",
       "size": "38",
       "color": "white",
-      "inStock":true,
+      "inStock": true,
       "brand": "Puma"
     },
     {
@@ -250,7 +250,7 @@
       "img": "https://images.pexels.com/photos/3881129/pexels-photo-3881129.jpeg?auto=compress&cs=tinysrgb&w=1600",
       "size": "38",
       "color": "white",
-      "inStock":true,
+      "inStock": true,
       "brand": "Nike"
     },
     {
@@ -261,9 +261,10 @@
       "img": "https://images.pexels.com/photos/8839887/pexels-photo-8839887.jpeg?auto=compress&cs=tinysrgb&w=1600",
       "size": "38",
       "color": "Black",
-      "inStock":false,
+      "inStock": false,
       "brand": "Puma"
-    },    {
+    },
+    {
       "id": "25D2",
       "name": "Product 25",
       "description": "This is a discription for this product",
@@ -271,9 +272,10 @@
       "img": "https://images.pexels.com/photos/9817940/pexels-photo-9817940.png?auto=compress&cs=tinysrgb&w=600",
       "size": "38",
       "color": "perple",
-      "inStock":true,
+      "inStock": true,
       "brand": "Armani"
-    },    {
+    },
+    {
       "id": "26D2",
       "name": "Product 26",
       "description": "This is a discription for this product",
@@ -281,9 +283,10 @@
       "img": "https://images.pexels.com/photos/5782711/pexels-photo-5782711.jpeg?auto=compress&cs=tinysrgb&w=600",
       "size": "98",
       "color": "red",
-      "inStock":true,
+      "inStock": true,
       "brand": "Armani"
-    },    {
+    },
+    {
       "id": "27D2",
       "name": "Product 27",
       "description": "This is a discription for this product",
@@ -291,9 +294,10 @@
       "img": "https://images.pexels.com/photos/7814877/pexels-photo-7814877.jpeg?auto=compress&cs=tinysrgb&w=600",
       "size": "56",
       "color": "yellow",
-      "inStock":true,
+      "inStock": true,
       "brand": "BOSS"
-    },    {
+    },
+    {
       "id": "28D2",
       "name": "Product 28",
       "description": "This is a discription for this product",
@@ -301,9 +305,10 @@
       "img": "https://images.pexels.com/photos/6621434/pexels-photo-6621434.jpeg?auto=compress&cs=tinysrgb&w=600",
       "size": "11",
       "color": "green",
-      "inStock":true,
+      "inStock": true,
       "brand": "Nike"
-    },    {
+    },
+    {
       "id": "29D2",
       "name": "Product 29",
       "description": "This is a discription for this product",
@@ -311,9 +316,10 @@
       "img": "https://images.pexels.com/photos/7680757/pexels-photo-7680757.jpeg?auto=compress&cs=tinysrgb&w=600",
       "size": "38",
       "color": "perple",
-      "inStock":true,
+      "inStock": true,
       "brand": "Nike"
-    },    {
+    },
+    {
       "id": "30D2",
       "name": "Product 30",
       "description": "This is a discription for this product",
@@ -321,9 +327,10 @@
       "img": "https://images.pexels.com/photos/7814566/pexels-photo-7814566.jpeg?auto=compress&cs=tinysrgb&w=600",
       "size": "38",
       "color": "yellow",
-      "inStock":true,
+      "inStock": true,
       "brand": "Adidas"
-    },    {
+    },
+    {
       "id": "31D2",
       "name": "Product 31",
       "description": "This is a discription for this product",
@@ -331,7 +338,7 @@
       "img": "https://images.pexels.com/photos/7038234/pexels-photo-7038234.jpeg?auto=compress&cs=tinysrgb&w=600",
       "size": "38",
       "color": "yellow",
-      "inStock":true,
+      "inStock": true,
       "brand": "Adidas"
     }
   ]
