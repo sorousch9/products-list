@@ -14,6 +14,7 @@ import {
   MenuItem,
   Rating,
   Typography,
+  CircularProgress,
 } from "@mui/material";
 import { blueGrey } from "@mui/material/colors";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
@@ -23,6 +24,7 @@ import { useEffect, useState } from "react";
 import { Stack } from "@mui/system";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+
 interface ProductT {
   id: string;
   name: string;
@@ -57,9 +59,13 @@ const Product: React.FC = () => {
   }, [id]);
 
   if (!product) {
-    return <div>Loading...</div>;
+    return (
+      <Box sx={{ display: "flex",justifyContent:"center" }}>
+        <CircularProgress />
+      </Box>
+    );
   }
-  console.log(product)
+  console.log(product);
 
   const handleChange = (event: SelectChangeEvent) => {
     setValue(event.target.value);
@@ -76,8 +82,8 @@ const Product: React.FC = () => {
             <Card>
               <CardMedia
                 sx={{ height: 650 }}
-                image="https://images.pexels.com/photos/14758630/pexels-photo-14758630.jpeg?cs=srgb&dl=pexels-hatice-no%C4%9Fman-14758630.jpg&fm=jpg&w=640&h=960"
-                title="green iguana"
+                image={product.img}
+                title={product.name}
               />
             </Card>
           </Item>
@@ -85,15 +91,11 @@ const Product: React.FC = () => {
         <Grid xs md>
           <Stack direction="column" justifyContent="space-around" spacing={2}>
             <Item>
-              <Typography variant="h4">name</Typography>
-              <Typography gutterBottom>Brand Name</Typography>
+              <Typography variant="h4">{product.name}</Typography>
+              <Typography gutterBottom>Brand : {product.brand}</Typography>
             </Item>
             <Item>
-              <Typography sx={{ textAlign: "left" }}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae
-                et, veritatis ipsum reiciendis asperiores fuga aperiam
-                voluptates. Natus fugiat, doloremque, voluptatibus voluptate at
-                ullam, deserunt sed sunt et sint soluta.
+              <Typography sx={{ textAlign: "left" }}>{product.description}
               </Typography>
             </Item>
 
@@ -140,7 +142,7 @@ const Product: React.FC = () => {
             </Item>
             <Item sx={{ textAlign: "left" }}>
               <Typography variant="h5" color={blueGrey[900]}>
-                Price : $ 199
+                Price : $ {product.price}
               </Typography>
               <Typography variant="caption">
                 <strong>inkl. MwSt. zzgl.</strong> Versandkosten

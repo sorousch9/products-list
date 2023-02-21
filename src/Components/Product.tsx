@@ -5,6 +5,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import AddIcon from "@mui/icons-material/Add";
 import Typography from "@mui/material/Typography";
+import { Link } from "react-router-dom";
 
 interface ProductT {
   product?: {
@@ -27,7 +28,7 @@ const Product: React.FC<ProductT> = ({ product }) => {
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          {product?.name}
+        <Link to={`http://localhost:3000/product/${product?.id}`}>{product?.name}</Link>
         </Typography>
         <Typography>
           Price: <strong>${product?.price}</strong>
