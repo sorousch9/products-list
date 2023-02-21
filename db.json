@@ -126,7 +126,7 @@
       "name": "Product 12",
       "description": "This is a discription for this product",
       "price": 75,
-      "img": "https://images.pexels.com/photos/13867156/pexels-photo-13867156.jpeg?cs=srgb&dl=pexels-studio-naae-13867156.jpg&fm=jpg&w=140&h=153",
+      "img": "https://images.pexels.com/photos/3373722/pexels-photo-3373722.jpeg?auto=compress&cs=tinysrgb&w=600",
       "size": "38",
       "color": "yellow",
       "inStock":true,
@@ -262,7 +262,77 @@
       "size": "38",
       "color": "Black",
       "inStock":false,
+      "brand": "Puma"
+    },    {
+      "id": "25D2",
+      "name": "Product 25",
+      "description": "This is a discription for this product",
+      "price": 88,
+      "img": "https://images.pexels.com/photos/9817940/pexels-photo-9817940.png?auto=compress&cs=tinysrgb&w=600",
+      "size": "38",
+      "color": "perple",
+      "inStock":true,
+      "brand": "Armani"
+    },    {
+      "id": "26D2",
+      "name": "Product 26",
+      "description": "This is a discription for this product",
+      "price": 77,
+      "img": "https://images.pexels.com/photos/5782711/pexels-photo-5782711.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "size": "98",
+      "color": "red",
+      "inStock":true,
+      "brand": "Armani"
+    },    {
+      "id": "27D2",
+      "name": "Product 27",
+      "description": "This is a discription for this product",
+      "price": 77,
+      "img": "https://images.pexels.com/photos/7814877/pexels-photo-7814877.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "size": "56",
+      "color": "yellow",
+      "inStock":true,
+      "brand": "BOSS"
+    },    {
+      "id": "28D2",
+      "name": "Product 28",
+      "description": "This is a discription for this product",
+      "price": 11,
+      "img": "https://images.pexels.com/photos/6621434/pexels-photo-6621434.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "size": "11",
+      "color": "green",
+      "inStock":true,
       "brand": "Nike"
+    },    {
+      "id": "29D2",
+      "name": "Product 29",
+      "description": "This is a discription for this product",
+      "price": 23,
+      "img": "https://images.pexels.com/photos/7680757/pexels-photo-7680757.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "size": "38",
+      "color": "perple",
+      "inStock":true,
+      "brand": "Nike"
+    },    {
+      "id": "30D2",
+      "name": "Product 30",
+      "description": "This is a discription for this product",
+      "price": 60,
+      "img": "https://images.pexels.com/photos/7814566/pexels-photo-7814566.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "size": "38",
+      "color": "yellow",
+      "inStock":true,
+      "brand": "Adidas"
+    },    {
+      "id": "31D2",
+      "name": "Product 31",
+      "description": "This is a discription for this product",
+      "price": 75,
+      "img": "https://images.pexels.com/photos/7038234/pexels-photo-7038234.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "size": "38",
+      "color": "yellow",
+      "inStock":true,
+      "brand": "Adidas"
     }
   ]
 }

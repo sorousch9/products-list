@@ -129,6 +129,11 @@ const ProductList: React.FC = () => {
     fetchProducts();
   }, [filters, pageNumber, pageLimit]);
 
+  
+  const totalPage = +(
+    countPrdoducts < 10 ? 1 : countPrdoducts / pageLimit
+  ).toFixed();
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
@@ -241,19 +246,25 @@ const ProductList: React.FC = () => {
         </Grid>
         <Grid container xs={12} md={7} lg={8} spacing={4}>
           {products.map((product) => (
-            <Grid xs={6} lg={3} key={product.id}>
-              <Box component="ul" aria-labelledby="category-a" sx={{ pl: 2 }}>
+            <Grid xs={6} lg={4} xl={3} key={product.id}>
+              <Box component="ul" aria-labelledby="category-a" sx={{ pl: 0 }}>
                 <Product product={product} key={product.id} />
               </Box>
             </Grid>
           ))}
-          <Grid container xs={12} md={12} lg={12} spacing={4}  justifyContent="center">
+          <Grid
+            container
+            xs={12}
+            md={12}
+            lg={12}
+            spacing={4}
+            justifyContent="center"
+          >
             <Pagination
               sx={{ justifyContent: "center" }}
               page={pageNumber}
-              count={countPrdoducts < 10 ? 1 : countPrdoducts / pageLimit}
+              count={totalPage}
               renderItem={(item) => (
-               
                 <PaginationItem
                   component={Link}
                   to={`/${item.page === 1 ? "" : `?page=${item.page}`}`}
