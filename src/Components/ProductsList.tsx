@@ -129,7 +129,7 @@ const ProductList: React.FC = () => {
     fetchProducts();
   }, [filters, pageNumber, pageLimit]);
 
-  
+
   const totalPage = +(
     countPrdoducts < 10 ? 1 : countPrdoducts / pageLimit
   ).toFixed();
@@ -142,9 +142,9 @@ const ProductList: React.FC = () => {
             <Item>Filtering section</Item>
           </Grid>
           <Stack spacing={2}>
-            <Item sx={{ paddingRight: "7rem", paddingLeft: "7rem" }}>
-              <Typography gutterBottom>Price</Typography>
+            <Item>
               <TextField
+              sx={{paddingRight:".5rem",marginTop:".7rem"}}
                 label="Minimum Price"
                 name="minPrice"
                 type="number"
@@ -152,6 +152,7 @@ const ProductList: React.FC = () => {
                 onChange={handleMinPriceChange}
               />
               <TextField
+              sx={{paddingRight:".5rem",marginTop:".7rem"}}
                 label="Maximum Price"
                 name="maxPrice"
                 type="number"
