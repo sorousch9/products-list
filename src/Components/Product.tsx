@@ -28,7 +28,13 @@ const Product: React.FC<ProductT> = ({ product }) => {
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-        <Link to={`http://localhost:3000/product/${product?.id}`}>{product?.name}</Link>
+          <Link
+          className="Links"
+          
+            to={`http://localhost:3000/product/${product?.id}`}
+          >
+            {product?.name}
+          </Link>
         </Typography>
         <Typography>
           Price: <strong>${product?.price}</strong>

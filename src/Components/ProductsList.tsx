@@ -53,7 +53,7 @@ const MenuProps = {
     },
   },
 };
-const productsSizeFilter = ["38", "48", "33", "42", "35", "44"];
+const productsSizeFilter = ["26", "38", "40", "42", "48", "44"];
 
 const productsColorFilter = [
   "Black",

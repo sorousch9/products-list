@@ -17,7 +17,7 @@
       "description": "This is a discription for this product",
       "price": 20,
       "img": "https://images.pexels.com/photos/12564670/pexels-photo-12564670.jpeg?auto=compress&cs=tinysrgb&w=1600",
-      "size": "39",
+      "size": "40",
       "color": "white",
       "inStock": true,
       "brand": "Puma"
@@ -39,7 +39,7 @@
       "description": "This is a discription for this product",
       "price": 35,
       "img": "https://images.pexels.com/photos/6666403/pexels-photo-6666403.jpeg?auto=compress&cs=tinysrgb&w=1600",
-      "size": "40",
+      "size": "26",
       "color": "perple",
       "inStock": true,
       "brand": "Nike"
@@ -105,7 +105,7 @@
       "description": "This is a discription for this product",
       "price": 34,
       "img": "https://images.pexels.com/photos/9096975/pexels-photo-9096975.jpeg?auto=compress&cs=tinysrgb&w=1600",
-      "size": "38",
+      "size": "42",
       "color": "Black",
       "inStock": true,
       "brand": "BOSS"
@@ -116,7 +116,7 @@
       "description": "This is a discription for this product",
       "price": 25,
       "img": "https://images.pexels.com/photos/3568518/pexels-photo-3568518.jpeg?auto=compress&cs=tinysrgb&w=1600",
-      "size": "38",
+      "size": "48",
       "color": "Black",
       "inStock": true,
       "brand": "Adidas"
@@ -160,7 +160,7 @@
       "description": "This is a discription for this product",
       "price": 65,
       "img": "https://images.pexels.com/photos/9878682/pexels-photo-9878682.jpeg?auto=compress&cs=tinysrgb&w=600",
-      "size": "38",
+      "size": "48",
       "color": "red",
       "inStock": true,
       "brand": "BOSS"
@@ -171,7 +171,7 @@
       "description": "This is a discription for this product",
       "price": 65,
       "img": "https://images.pexels.com/photos/14997965/pexels-photo-14997965.jpeg?auto=compress&cs=tinysrgb&w=1600",
-      "size": "38",
+      "size": "44",
       "color": "Black",
       "inStock": false,
       "brand": "Nike"
@@ -182,7 +182,7 @@
       "description": "This is a discription for this product",
       "price": 73,
       "img": "https://images.pexels.com/photos/10046264/pexels-photo-10046264.jpeg?auto=compress&cs=tinysrgb&w=1600",
-      "size": "38",
+      "size": "44",
       "color": "perple",
       "inStock": true,
       "brand": "Reebok"
@@ -193,7 +193,7 @@
       "description": "This is a discription for this product",
       "price": 89,
       "img": "https://images.pexels.com/photos/5582621/pexels-photo-5582621.jpeg?auto=compress&cs=tinysrgb&w=1600",
-      "size": "38",
+      "size": "44",
       "color": "perple",
       "inStock": true,
       "brand": "Nike"
@@ -204,7 +204,7 @@
       "description": "This is a discription for this product",
       "price": 98,
       "img": "https://images.pexels.com/photos/12486665/pexels-photo-12486665.jpeg?auto=compress&cs=tinysrgb&w=1600",
-      "size": "38",
+      "size": "26",
       "color": "perple",
       "inStock": true,
       "brand": "BOSS"
@@ -215,7 +215,7 @@
       "description": "This is a discription for this product",
       "price": 43,
       "img": "https://images.pexels.com/photos/13583359/pexels-photo-13583359.jpeg?auto=compress&cs=tinysrgb&w=1600",
-      "size": "38",
+      "size": "26",
       "color": "Black",
       "inStock": false,
       "brand": "Nike"
@@ -226,7 +226,7 @@
       "description": "This is a discription for this product",
       "price": 33,
       "img": "https://images.pexels.com/photos/8103079/pexels-photo-8103079.jpeg?auto=compress&cs=tinysrgb&w=1600",
-      "size": "38",
+      "size": "40",
       "color": "green",
       "inStock": true,
       "brand": "Puma"
@@ -237,7 +237,7 @@
       "description": "This is a discription for this product",
       "price": 40,
       "img": "https://images.pexels.com/photos/5912001/pexels-photo-5912001.jpeg?auto=compress&cs=tinysrgb&w=1600",
-      "size": "38",
+      "size": "44",
       "color": "white",
       "inStock": true,
       "brand": "Puma"
@@ -248,7 +248,7 @@
       "description": "This is a discription for this product",
       "price": 66,
       "img": "https://images.pexels.com/photos/3881129/pexels-photo-3881129.jpeg?auto=compress&cs=tinysrgb&w=1600",
-      "size": "38",
+      "size": "40",
       "color": "white",
       "inStock": true,
       "brand": "Nike"
@@ -281,7 +281,7 @@
       "description": "This is a discription for this product",
       "price": 77,
       "img": "https://images.pexels.com/photos/5782711/pexels-photo-5782711.jpeg?auto=compress&cs=tinysrgb&w=600",
-      "size": "98",
+      "size": "42",
       "color": "red",
       "inStock": true,
       "brand": "Armani"
@@ -292,7 +292,7 @@
       "description": "This is a discription for this product",
       "price": 77,
       "img": "https://images.pexels.com/photos/7814877/pexels-photo-7814877.jpeg?auto=compress&cs=tinysrgb&w=600",
-      "size": "56",
+      "size": "42",
       "color": "yellow",
       "inStock": true,
       "brand": "BOSS"
@@ -303,7 +303,7 @@
       "description": "This is a discription for this product",
       "price": 11,
       "img": "https://images.pexels.com/photos/6621434/pexels-photo-6621434.jpeg?auto=compress&cs=tinysrgb&w=600",
-      "size": "11",
+      "size": "26",
       "color": "green",
       "inStock": true,
       "brand": "Nike"
@@ -325,7 +325,7 @@
       "description": "This is a discription for this product",
       "price": 60,
       "img": "https://images.pexels.com/photos/7814566/pexels-photo-7814566.jpeg?auto=compress&cs=tinysrgb&w=600",
-      "size": "38",
+      "size": "26",
       "color": "yellow",
       "inStock": true,
       "brand": "Adidas"
@@ -336,7 +336,7 @@
       "description": "This is a discription for this product",
       "price": 75,
       "img": "https://images.pexels.com/photos/7038234/pexels-photo-7038234.jpeg?auto=compress&cs=tinysrgb&w=600",
-      "size": "38",
+      "size": "48",
       "color": "yellow",
       "inStock": true,
       "brand": "Adidas"
