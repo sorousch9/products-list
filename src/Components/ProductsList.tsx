@@ -230,6 +230,7 @@ const ProductList: React.FC = () => {
                   labelId="brand"
                   value={filters.brand}
                   name="brand"
+                  MenuProps={MenuProps}
                   multiple
                   input={<OutlinedInput label="Brand" />}
                   onChange={handleFiltersChange}

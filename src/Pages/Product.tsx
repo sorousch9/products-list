@@ -57,7 +57,7 @@ const Product: React.FC = () => {
         setProduct(response.data);
       });
   }, [id]);
-  console.log(product?.size);
+
   if (!product) {
     return (
       <Box sx={{ display: "flex", justifyContent: "center" }}>
