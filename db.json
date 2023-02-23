@@ -6,8 +6,8 @@
       "description": "This is a discription for this product",
       "price": 10,
       "img": "https://images.pexels.com/photos/2697787/pexels-photo-2697787.jpeg?auto=compress&cs=tinysrgb&w=1600",
-      "size": "38",
-      "color": "Black",
+      "size": ["38","40","26"],
+      "color": ["Black","white"],
       "inStock": true,
       "brand": "Nike"
     },
@@ -28,8 +28,8 @@
       "description": "This is a discription for this product",
       "price": 30,
       "img": "https://images.pexels.com/photos/4464488/pexels-photo-4464488.jpeg?auto=compress&cs=tinysrgb&w=1600",
-      "size": "40",
-      "color": "Black",
+      "size": ["36","40","26"],
+      "color": ["perple","white"],
       "inStock": true,
       "brand": "Reebok"
     },
@@ -61,8 +61,8 @@
       "description": "This is a discription for this product",
       "price": 53,
       "img": "https://images.pexels.com/photos/11124443/pexels-photo-11124443.jpeg?auto=compress&cs=tinysrgb&w=1600",
-      "size": "38",
-      "color": "green",
+      "size": ["38","40"],
+      "color": ["green","white"],
       "inStock": true,
       "brand": "Reebok"
     },
@@ -105,8 +105,8 @@
       "description": "This is a discription for this product",
       "price": 34,
       "img": "https://images.pexels.com/photos/9096975/pexels-photo-9096975.jpeg?auto=compress&cs=tinysrgb&w=1600",
-      "size": "42",
-      "color": "Black",
+      "size": ["38","26"],
+      "color": ["black","white"],
       "inStock": true,
       "brand": "BOSS"
     },

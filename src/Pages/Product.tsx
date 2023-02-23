@@ -33,8 +33,8 @@ interface ProductT {
   img: string;
   inStock: boolean;
   brand: string;
-  color: string;
-  size: string;
+  color: string[];
+  size: string[];
 }
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -47,8 +47,8 @@ const Item = styled(Paper)(({ theme }) => ({
 const Product: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const [product, setProduct] = useState<ProductT | null>(null);
-  const [value, setValue] = useState("");
-  const [value2, setValue2] = useState("");
+  const [size, setSize] = useState("");
+  const [color, setColor] = useState("");
 
   useEffect(() => {
     axios
@@ -57,21 +57,20 @@ const Product: React.FC = () => {
         setProduct(response.data);
       });
   }, [id]);
-
+  console.log(product?.size);
   if (!product) {
     return (
-      <Box sx={{ display: "flex",justifyContent:"center" }}>
+      <Box sx={{ display: "flex", justifyContent: "center" }}>
         <CircularProgress />
       </Box>
     );
   }
-  console.log(product);
 
   const handleChange = (event: SelectChangeEvent) => {
-    setValue(event.target.value);
+    setSize(event.target.value);
   };
   const handleChange2 = (event: SelectChangeEvent) => {
-    setValue2(event.target.value);
+    setColor(event.target.value);
   };
 
   return (
@@ -95,25 +94,32 @@ const Product: React.FC = () => {
               <Typography gutterBottom>Brand : {product.brand}</Typography>
             </Item>
             <Item>
-              <Typography sx={{ textAlign: "left" }}>{product.description}
+              <Typography sx={{ textAlign: "left" }}>
+                {product.description}
               </Typography>
             </Item>
 
             <Item>
               <FormControl sx={{ m: 2, minWidth: 180 }}>
                 <InputLabel id="demo-simple-select-autowidth-label">
-                  Value
+                  Size
                 </InputLabel>
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
-                  value={value}
+                  value={size}
                   label="Value"
                   onChange={handleChange}
                 >
-                  <MenuItem value={1}>Value </MenuItem>
-                  <MenuItem value={2}>Value one</MenuItem>
-                  <MenuItem value={3}>Value one and a half</MenuItem>
+                  {typeof product?.size === "object" ? (
+                    product?.size.map((item) => (
+                      <MenuItem value={item} key={item}>
+                        {item}
+                      </MenuItem>
+                    ))
+                  ) : (
+                    <MenuItem value={product?.size}>{product?.size}</MenuItem>
+                  )}
                 </Select>
                 <FormHelperText sx={{ m: 1, minWidth: 180 }}>
                   Required *
@@ -121,18 +127,24 @@ const Product: React.FC = () => {
               </FormControl>
               <FormControl sx={{ m: 2, minWidth: 180 }}>
                 <InputLabel id="demo-simple-select-autowidth-label">
-                  Value2
+                  Color
                 </InputLabel>
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
-                  value={value2}
+                  value={color}
                   label="Value"
                   onChange={handleChange2}
                 >
-                  <MenuItem value={1}>Value </MenuItem>
-                  <MenuItem value={2}>Value one</MenuItem>
-                  <MenuItem value={3}>Value one and a half</MenuItem>
+                     {typeof product?.color === "object" ? (
+                    product?.color.map((item) => (
+                      <MenuItem value={item} key={item}>
+                        {item}
+                      </MenuItem>
+                    ))
+                  ) : (
+                    <MenuItem value={product?.color}>{product?.color}</MenuItem>
+                  )}
                 </Select>
 
                 <FormHelperText sx={{ m: 1, minWidth: 120 }}>

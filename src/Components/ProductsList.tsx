@@ -31,8 +31,8 @@ interface ApiResponse {
   img: string;
   inStock: boolean;
   brand: string;
-  color: string;
-  size: string;
+  color: string | string[];
+  size: string | string[];
 }
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -74,7 +74,7 @@ interface Filters {
   brand: string[];
 }
 
-const ProductList: React.FC= () => {
+const ProductList: React.FC = () => {
   const [products, setProducts] = useState<ApiResponse[]>([]);
   const [countPrdoducts, setCountPrdoducts] = useState(10);
   const [filters, setFilters] = useState<Filters>({
@@ -135,7 +135,7 @@ const ProductList: React.FC= () => {
   const totalPage = +(
     countPrdoducts < 10 ? 1 : countPrdoducts / pageLimit
   ).toFixed();
-  console.log(products)
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
