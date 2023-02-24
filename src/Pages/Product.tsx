@@ -86,7 +86,7 @@ const Product: React.FC = () => {
           <Link color="inherit" to="/" className="Links">
             Home
           </Link>
-          <Link className="Links" color="inherit" to="/">
+          <Link className="Links" color="inherit" to="/products">
             Products
           </Link>
           <Typography color="text.primary">{product.name}</Typography>
