@@ -32,8 +32,10 @@ export default function Navbar() {
           alignItems: "center",
           textAlign: "center",
           justifyContent: "flex-end",
+          borderBottom:"1px solid #cdcdcd"
         }}
       >
+        <Link to="/" className="Links" style={{ minWidth: 80 }}>Home</Link>
         <Typography sx={{ minWidth: 100 }}>Contact</Typography>
         <Link to="/cart" className="Links">
           <Stack
