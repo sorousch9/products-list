@@ -35,21 +35,21 @@ export default function Navbar() {
         }}
       >
         <Typography sx={{ minWidth: 100 }}>Contact</Typography>
-        <Stack
-          sx={{
-            flexDirection: "row",
-            minWidth: 80,
-            justifyContent: "space-evenly",
-            alignItems: "center",
-          }}
-        >
-          <Link to="/cart" className="Links">
+        <Link to="/cart" className="Links">
+          <Stack
+            sx={{
+              flexDirection: "row",
+              minWidth: 80,
+              justifyContent: "space-evenly",
+              alignItems: "center",
+            }}
+          >
             Cart
-          </Link>
-          <Badge badgeContent={4} color="success">
-            <ShoppingCartOutlinedIcon color="action" />
-          </Badge>
-        </Stack>
+            <Badge badgeContent={4} color="success">
+              <ShoppingCartOutlinedIcon color="action" />
+            </Badge>
+          </Stack>
+        </Link>
 
         <Tooltip title="Account settings">
           <IconButton

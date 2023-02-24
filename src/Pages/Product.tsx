@@ -21,10 +21,11 @@ import { blueGrey } from "@mui/material/colors";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import ShareIcon from "@mui/icons-material/Share";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Stack } from "@mui/system";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
+import Navbar from "../Components/Navbar";
 
 interface ProductT {
   id: string;
@@ -80,131 +81,136 @@ const Product: React.FC = () => {
   }
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <div role="presentation" onClick={handleClick}>
-        <Breadcrumbs aria-label="breadcrumb">
-          <Link color="inherit" to="/" className="Links">
-            Home
-          </Link>
-          <Link className="Links" color="inherit" to="/products">
-            Products
-          </Link>
-          <Typography color="text.primary">{product.name}</Typography>
-        </Breadcrumbs>
-      </div>
-      <Grid container spacing={3}>
-        <Grid xs={12} md={7}>
-          <Item>
-            <Card>
-              <CardMedia
-                sx={{ height: 650 }}
-                image={product.img}
-                title={product.name}
-              />
-            </Card>
-          </Item>
-        </Grid>
-        <Grid xs md>
-          <Stack direction="column" justifyContent="space-around" spacing={2}>
+    <Fragment>
+      <Navbar />
+      <Box sx={{ flexGrow: 1 }}>
+        <div role="presentation" onClick={handleClick}>
+          <Breadcrumbs aria-label="breadcrumb">
+            <Link color="inherit" to="/" className="Links">
+              Home
+            </Link>
+            <Link className="Links" color="inherit" to="/products">
+              Products
+            </Link>
+            <Typography color="text.primary">{product.name}</Typography>
+          </Breadcrumbs>
+        </div>
+        <Grid container spacing={3}>
+          <Grid xs={12} md={7}>
             <Item>
-              <Typography variant="h4">{product.name}</Typography>
-              <Typography gutterBottom>Brand : {product.brand}</Typography>
+              <Card>
+                <CardMedia
+                  sx={{ height: 650 }}
+                  image={product.img}
+                  title={product.name}
+                />
+              </Card>
             </Item>
-            <Item>
-              <Typography sx={{ textAlign: "left" }}>
-                {product.description}
-              </Typography>
-            </Item>
+          </Grid>
+          <Grid xs md>
+            <Stack direction="column" justifyContent="space-around" spacing={2}>
+              <Item>
+                <Typography variant="h4">{product.name}</Typography>
+                <Typography gutterBottom>Brand : {product.brand}</Typography>
+              </Item>
+              <Item>
+                <Typography sx={{ textAlign: "left" }}>
+                  {product.description}
+                </Typography>
+              </Item>
 
-            <Item>
-              <FormControl sx={{ m: 2, minWidth: 180 }}>
-                <InputLabel id="demo-simple-select-autowidth-label">
-                  Size
-                </InputLabel>
-                <Select
-                  labelId="demo-simple-select-label"
-                  id="demo-simple-select"
-                  value={size}
-                  label="Value"
-                  onChange={handleChange}
-                >
-                  {typeof product?.size === "object" ? (
-                    product?.size.map((item) => (
-                      <MenuItem value={item} key={item}>
-                        {item}
+              <Item>
+                <FormControl sx={{ m: 2, minWidth: 180 }}>
+                  <InputLabel id="demo-simple-select-autowidth-label">
+                    Size
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={size}
+                    label="Value"
+                    onChange={handleChange}
+                  >
+                    {typeof product?.size === "object" ? (
+                      product?.size.map((item) => (
+                        <MenuItem value={item} key={item}>
+                          {item}
+                        </MenuItem>
+                      ))
+                    ) : (
+                      <MenuItem value={product?.size}>{product?.size}</MenuItem>
+                    )}
+                  </Select>
+                  <FormHelperText sx={{ m: 1, minWidth: 180 }}>
+                    Required *
+                  </FormHelperText>
+                </FormControl>
+                <FormControl sx={{ m: 2, minWidth: 180 }}>
+                  <InputLabel id="demo-simple-select-autowidth-label">
+                    Color
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={color}
+                    label="Value"
+                    onChange={handleChange2}
+                  >
+                    {typeof product?.color === "object" ? (
+                      product?.color.map((item) => (
+                        <MenuItem value={item} key={item}>
+                          {item}
+                        </MenuItem>
+                      ))
+                    ) : (
+                      <MenuItem value={product?.color}>
+                        {product?.color}
                       </MenuItem>
-                    ))
-                  ) : (
-                    <MenuItem value={product?.size}>{product?.size}</MenuItem>
-                  )}
-                </Select>
-                <FormHelperText sx={{ m: 1, minWidth: 180 }}>
-                  Required *
-                </FormHelperText>
-              </FormControl>
-              <FormControl sx={{ m: 2, minWidth: 180 }}>
-                <InputLabel id="demo-simple-select-autowidth-label">
-                  Color
-                </InputLabel>
-                <Select
-                  labelId="demo-simple-select-label"
-                  id="demo-simple-select"
-                  value={color}
-                  label="Value"
-                  onChange={handleChange2}
-                >
-                  {typeof product?.color === "object" ? (
-                    product?.color.map((item) => (
-                      <MenuItem value={item} key={item}>
-                        {item}
-                      </MenuItem>
-                    ))
-                  ) : (
-                    <MenuItem value={product?.color}>{product?.color}</MenuItem>
-                  )}
-                </Select>
+                    )}
+                  </Select>
 
-                <FormHelperText sx={{ m: 1, minWidth: 120 }}>
-                  Required *
-                </FormHelperText>
-              </FormControl>
-            </Item>
-            <Item sx={{ textAlign: "left" }}>
-              <Typography variant="h5" color={blueGrey[900]}>
-                Price : $ {product.price}
-              </Typography>
-              <Typography variant="caption">
-                <strong>inkl. MwSt. zzgl.</strong> Versandkosten
-              </Typography>
-            </Item>
-            <Item sx={{ textAlign: "left" }}>
-              <Typography variant="body1">Seller: Olano GmbH</Typography>
-              <Typography variant="caption">
-                AGB Datenschutz Impressum
-              </Typography>
-            </Item>
-            <Button variant="contained" endIcon={<AddShoppingCartIcon />}>
-              Add to Cart
-            </Button>
-            <Button variant="outlined" endIcon={<FavoriteBorderIcon />}>
-              Remember Article
-            </Button>
-            <Button variant="outlined" endIcon={<ShareIcon />}>
-              Share
-            </Button>
-          </Stack>
+                  <FormHelperText sx={{ m: 1, minWidth: 120 }}>
+                    Required *
+                  </FormHelperText>
+                </FormControl>
+              </Item>
+              <Item sx={{ textAlign: "left" }}>
+                <Typography variant="h5" color={blueGrey[900]}>
+                  Price : $ {product.price}
+                </Typography>
+                <Typography variant="caption">
+                  <strong>inkl. MwSt. zzgl.</strong> Versandkosten
+                </Typography>
+              </Item>
+              <Item sx={{ textAlign: "left" }}>
+                <Typography variant="body1">Seller: Olano GmbH</Typography>
+                <Typography variant="caption">
+                  AGB Datenschutz Impressum
+                </Typography>
+              </Item>
+              <Button variant="contained" endIcon={<AddShoppingCartIcon />}>
+                Add to Cart
+              </Button>
+              <Button variant="outlined" endIcon={<FavoriteBorderIcon />}>
+                Remember Article
+              </Button>
+              <Button variant="outlined" endIcon={<ShareIcon />}>
+                Share
+              </Button>
+            </Stack>
+          </Grid>
         </Grid>
-      </Grid>
-      <Item sx={{ textAlign: "left" }}>
-        <Typography>Customer reviews</Typography>
-        <Rating
-          name="half-rating-read"
-          defaultValue={4.5}
-          precision={0.5}
-          readOnly
-        />
-      </Item>
-    </Box>
+        <Item sx={{ textAlign: "left" }}>
+          <Typography>Customer reviews</Typography>
+          <Rating
+            name="half-rating-read"
+            defaultValue={4.5}
+            precision={0.5}
+            readOnly
+          />
+        </Item>
+      </Box>
+    </Fragment>
   );
 };
 
