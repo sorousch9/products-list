@@ -11,15 +11,23 @@ import {
 } from "@mui/material";
 import Navbar from "../Components/Navbar";
 
-const Cart = () => {
+const Cart: React.FC = () => {
   return (
     <div>
       <Navbar />
-      <Container maxWidth="lg" sx={{ backgroundColor: "gray" }}>
-        <Grid container sx={{ backgroundColor: "red" }}>
-          <Grid item xs={12} sm={9} sx={{ backgroundColor: "yellow" }}>
-            <TableContainer component={Paper}>
-              <Table sx={{ minWidth: 650 }} aria-label="cart table">
+      <Container maxWidth="lg" sx={{ backgroundColor: "#cdcdcd" }}>
+        <Grid
+          container
+          sx={{
+            justifyContent: "space-evenly",
+            paddingTop: "1rem",
+            paddingBottom: "1rem",
+            alignItems: "start",
+          }}
+        >
+          <Grid sm={12} md={8}>
+            <TableContainer component={Paper} elevation={6}>
+              <Table>
                 <TableHead>
                   <TableRow>
                     <TableCell>Product Name</TableCell>
@@ -48,8 +56,33 @@ const Cart = () => {
               </Table>
             </TableContainer>
           </Grid>
-          <Grid item xs={12} sm={3}>
-            Col 2
+          <Grid  sm={12} md={3}>
+            <TableContainer component={Paper} elevation={6}>
+              <TableRow>
+                <TableCell>
+                  <strong>TOTAL</strong>
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell align="left">Subtotal</TableCell>
+                <TableCell align="right">$32</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell align="left">Delivery</TableCell>
+                <TableCell align="right">$32</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell sx={{ fontSize: "1rem" }}>
+                  <strong>Total (VAT included)</strong>{" "}
+                </TableCell>
+                <TableCell
+                  sx={{ fontSize: "1.3rem", paddingLeft: "2.5rem" }}
+                  align="justify"
+                >
+                  <strong>$32</strong>
+                </TableCell>
+              </TableRow>
+            </TableContainer>
           </Grid>
         </Grid>
       </Container>
