@@ -8,11 +8,13 @@ import {
   Divider,
   IconButton,
   Typography,
+  Badge,
+  Stack,
 } from "@mui/material";
 import { PersonAdd, Settings, Logout } from "@mui/icons-material";
 import { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
-
+import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 export default function Navbar() {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -33,9 +35,22 @@ export default function Navbar() {
         }}
       >
         <Typography sx={{ minWidth: 100 }}>Contact</Typography>
-        <Link to="/cart" style={{ minWidth: 100 }} className="Links">
-          Cart
-        </Link>
+        <Stack
+          sx={{
+            flexDirection: "row",
+            minWidth: 80,
+            justifyContent: "space-evenly",
+            alignItems: "center",
+          }}
+        >
+          <Link to="/cart" className="Links">
+            Cart
+          </Link>
+          <Badge badgeContent={4} color="success">
+            <ShoppingCartOutlinedIcon color="action" />
+          </Badge>
+        </Stack>
+
         <Tooltip title="Account settings">
           <IconButton
             onClick={handleClick}
