@@ -15,6 +15,7 @@ import {
   Rating,
   Typography,
   CircularProgress,
+  Breadcrumbs,
 } from "@mui/material";
 import { blueGrey } from "@mui/material/colors";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
@@ -23,7 +24,7 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { useEffect, useState } from "react";
 import { Stack } from "@mui/system";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 interface ProductT {
   id: string;
@@ -73,8 +74,24 @@ const Product: React.FC = () => {
     setColor(event.target.value);
   };
 
+  function handleClick(event: React.MouseEvent<HTMLDivElement, MouseEvent>) {
+    event.preventDefault();
+    console.info("You clicked a breadcrumb.");
+  }
+
   return (
     <Box sx={{ flexGrow: 1 }}>
+      <div role="presentation" onClick={handleClick}>
+        <Breadcrumbs aria-label="breadcrumb">
+          <Link color="inherit" to="/" className="Links">
+            Home
+          </Link>
+          <Link className="Links" color="inherit" to="/">
+            Products
+          </Link>
+          <Typography color="text.primary">{product.name}</Typography>
+        </Breadcrumbs>
+      </div>
       <Grid container spacing={3}>
         <Grid xs={12} md={7}>
           <Item>
@@ -136,7 +153,7 @@ const Product: React.FC = () => {
                   label="Value"
                   onChange={handleChange2}
                 >
-                     {typeof product?.color === "object" ? (
+                  {typeof product?.color === "object" ? (
                     product?.color.map((item) => (
                       <MenuItem value={item} key={item}>
                         {item}
