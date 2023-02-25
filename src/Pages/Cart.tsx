@@ -9,12 +9,16 @@ import {
   TableRow,
   Paper,
   IconButton,
+  ListItem,
+  ListItemAvatar,
+  Avatar,
+  ListItemText,
 } from "@mui/material";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Navbar from "../Components/Navbar";
-
+import ImageIcon from "@mui/icons-material/Image";
 const Cart: React.FC = () => {
   return (
     <div>
@@ -34,7 +38,7 @@ const Cart: React.FC = () => {
               <Table>
                 <TableHead>
                   <TableRow>
-                    <TableCell>Product Name</TableCell>
+                    <TableCell align="left">Product Name</TableCell>
                     <TableCell align="right">Price</TableCell>
                     <TableCell align="right">Quantity</TableCell>
                     <TableCell align="right">Total</TableCell>
@@ -43,8 +47,24 @@ const Cart: React.FC = () => {
                 </TableHead>
                 <TableBody>
                   <TableRow>
-                    <TableCell component="th" scope="row">
-                      Name
+                    <TableCell>
+                      <ListItem sx={{ paddingLeft: "2px" }}>
+                        <ListItemAvatar>
+                          <Avatar
+                            alt="product 1"
+                            src="https://images.pexels.com/photos/13802279/pexels-photo-13802279.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                            sx={{
+                              width: 62,
+                              height: 62,
+                              marginRight: "1rem",
+                            }}
+                          />
+                        </ListItemAvatar>
+                        <ListItemText
+                          primary="Product name 1"
+                          secondary="Color: black Size:32"
+                        />
+                      </ListItem>
                     </TableCell>
                     <TableCell align="right">$44</TableCell>
                     <TableCell align="right">
