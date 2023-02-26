@@ -13,18 +13,20 @@ import {
   ListItemAvatar,
   Avatar,
   ListItemText,
+  TableFooter,
 } from "@mui/material";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Navbar from "../Components/Navbar";
-import ImageIcon from "@mui/icons-material/Image";
+import { Fragment } from "react";
 const Cart: React.FC = () => {
   return (
-    <div>
+    <Fragment>
       <Navbar />
       <Container maxWidth="lg" sx={{ backgroundColor: "#f3f3f3" }}>
         <Grid
+          item
           container
           sx={{
             justifyContent: "space-evenly",
@@ -33,7 +35,7 @@ const Cart: React.FC = () => {
             alignItems: "start",
           }}
         >
-          <Grid sm={12} md={8}>
+          <Grid item sm={12} md={8}>
             <TableContainer component={Paper} elevation={6}>
               <Table>
                 <TableHead>
@@ -83,7 +85,6 @@ const Cart: React.FC = () => {
                       </IconButton>
                     </TableCell>
                   </TableRow>
-
                   <TableRow>
                     <TableCell colSpan={3} align="right">
                       Subtotal
@@ -94,37 +95,36 @@ const Cart: React.FC = () => {
               </Table>
             </TableContainer>
           </Grid>
-          <Grid sm={12} md={3}>
+          <Grid item sm={12} md={3}>
             <TableContainer component={Paper} elevation={6}>
-              <TableRow>
-                <TableCell>
-                  <strong>TOTAL</strong>
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell align="left">Subtotal</TableCell>
-                <TableCell align="right">$32</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell align="left">Delivery</TableCell>
-                <TableCell align="right">$32</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell sx={{ fontSize: "1rem" }}>
-                  <strong>Total (VAT included)</strong>{" "}
-                </TableCell>
-                <TableCell
-                  sx={{ fontSize: "1.3rem", paddingLeft: "2.5rem" }}
-                  align="justify"
-                >
-                  <strong>$32</strong>
-                </TableCell>
-              </TableRow>
+              <Table>
+                <TableHead>
+                  <TableRow>
+                    <TableCell align="center" colSpan={2}>TOTAL</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  <TableRow>
+                    <TableCell align="left">Subtotal</TableCell>
+                    <TableCell align="right">$32</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell align="left">Delivery</TableCell>
+                    <TableCell align="right">$3</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell align="left">
+                      <strong>Total (VAT included)</strong>
+                    </TableCell>
+                    <TableCell align="right">$32</TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
             </TableContainer>
           </Grid>
         </Grid>
       </Container>
-    </div>
+    </Fragment>
   );
 };
 
