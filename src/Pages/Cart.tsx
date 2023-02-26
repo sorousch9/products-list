@@ -13,13 +13,21 @@ import {
   ListItemAvatar,
   Avatar,
   ListItemText,
-  TableFooter,
+  Card,
+  CardContent,
+  Typography,
 } from "@mui/material";
+import pay from "../../src/Assets/cartPayment.png";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Navbar from "../Components/Navbar";
 import { Fragment } from "react";
+
+var today = new Date();
+var threeDaysLater = new Date();
+threeDaysLater.setDate(today.getDate() + 3)
+var dayDate = threeDaysLater.toLocaleDateString()
 const Cart: React.FC = () => {
   return (
     <Fragment>
@@ -94,13 +102,33 @@ const Cart: React.FC = () => {
                 </TableBody>
               </Table>
             </TableContainer>
+            <Card sx={{ marginTop: "1rem" }} elevation={3}>
+              <CardContent>
+                <Typography variant="h5" component="div">
+                  Estimated delivery
+                </Typography>
+                <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                  {dayDate}
+                </Typography>
+              </CardContent>
+            </Card>
+            <Card sx={{ marginTop: "1rem" }} elevation={3}>
+              <CardContent>
+                <Typography variant="h5" component="div">
+                  We accept
+                </Typography>
+                <img src={pay} alt="payimage" style={{ width: "100%" }} />
+              </CardContent>
+            </Card>
           </Grid>
           <Grid item sm={12} md={3}>
-            <TableContainer component={Paper} elevation={6}>
+            <TableContainer component={Paper} elevation={3}>
               <Table>
                 <TableHead>
                   <TableRow>
-                    <TableCell align="center" colSpan={2}>TOTAL</TableCell>
+                    <TableCell align="center" colSpan={2}>
+                      TOTAL
+                    </TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -121,6 +149,14 @@ const Cart: React.FC = () => {
                 </TableBody>
               </Table>
             </TableContainer>
+            <Card sx={{ marginTop: "1rem" }} elevation={3}>
+              <CardContent>
+                <Typography variant="h5" component="div">
+                  We accept
+                </Typography>
+                <img src={pay} alt="payimage" style={{ width: "100%" }} />
+              </CardContent>
+            </Card>
           </Grid>
         </Grid>
       </Container>
