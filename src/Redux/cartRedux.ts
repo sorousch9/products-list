@@ -8,7 +8,7 @@ interface ProductsT {
 const initialState: ProductsT = {
   products: [],
 };
-export const counterSlice = createSlice({
+export const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
@@ -27,8 +27,5 @@ export const counterSlice = createSlice({
   },
 });
 
-export const { addProduct } = counterSlice.actions;
-
-export const selectCount = (state: RootState) => state.counter.value;
-
-export default counterSlice.reducer;
+export const { addProduct } = cartSlice.actions;
+export default cartSlice.reducer;
