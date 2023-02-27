@@ -9,6 +9,7 @@
       "size": "38",
       "color": "Black",
       "inStock": true,
+      "quantity": 9,
       "brand": "Nike"
     },
     {
@@ -20,6 +21,7 @@
       "size": "40",
       "color": "white",
       "inStock": true,
+      "quantity": 9,
       "brand": "Puma"
     },
     {
@@ -31,6 +33,7 @@
       "size": "40",
       "color": "Black",
       "inStock": true,
+      "quantity": 9,
       "brand": "Reebok"
     },
     {
@@ -42,6 +45,7 @@
       "size": "26",
       "color": "perple",
       "inStock": true,
+      "quantity": 9,
       "brand": "Nike"
     },
     {
@@ -53,6 +57,7 @@
       "size": "48",
       "color": "Black",
       "inStock": true,
+      "quantity": 9,
       "brand": "Nike"
     },
     {
@@ -64,6 +69,7 @@
       "size": "38",
       "color": "green",
       "inStock": true,
+      "quantity": 9,
       "brand": "Reebok"
     },
     {
@@ -75,6 +81,7 @@
       "size": "38",
       "color": "Black",
       "inStock": true,
+      "quantity": 9,
       "brand": "Reebok"
     },
     {
@@ -86,6 +93,7 @@
       "size": "38",
       "color": "red",
       "inStock": true,
+      "quantity": 9,
       "brand": "Adidas"
     },
     {
@@ -97,6 +105,7 @@
       "size": "38",
       "color": "white",
       "inStock": true,
+      "quantity": 9,
       "brand": "Armani"
     },
     {
@@ -108,6 +117,7 @@
       "size": "42",
       "color": "Black",
       "inStock": true,
+      "quantity": 9,
       "brand": "BOSS"
     },
     {
@@ -119,6 +129,7 @@
       "size": "48",
       "color": "Black",
       "inStock": true,
+      "quantity": 9,
       "brand": "Adidas"
     },
     {
@@ -130,6 +141,7 @@
       "size": "38",
       "color": "yellow",
       "inStock": true,
+      "quantity": 9,
       "brand": "Puma"
     },
     {
@@ -141,6 +153,7 @@
       "size": "38",
       "color": "yellow",
       "inStock": false,
+      "quantity": 9,
       "brand": "Adidas"
     },
     {
@@ -152,6 +165,7 @@
       "size": "38",
       "color": "red",
       "inStock": true,
+      "quantity": 9,
       "brand": "Nike"
     },
     {
@@ -163,6 +177,7 @@
       "size": "48",
       "color": "red",
       "inStock": true,
+      "quantity": 9,
       "brand": "BOSS"
     },
     {
@@ -174,6 +189,7 @@
       "size": "44",
       "color": "Black",
       "inStock": false,
+      "quantity": 9,
       "brand": "Nike"
     },
     {
@@ -185,6 +201,7 @@
       "size": "44",
       "color": "perple",
       "inStock": true,
+      "quantity": 9,
       "brand": "Reebok"
     },
     {
@@ -196,6 +213,7 @@
       "size": "44",
       "color": "perple",
       "inStock": true,
+      "quantity": 9,
       "brand": "Nike"
     },
     {
@@ -207,6 +225,7 @@
       "size": "26",
       "color": "perple",
       "inStock": true,
+      "quantity": 9,
       "brand": "BOSS"
     },
     {
@@ -218,6 +237,7 @@
       "size": "26",
       "color": "Black",
       "inStock": false,
+      "quantity": 9,
       "brand": "Nike"
     },
     {
@@ -229,6 +249,7 @@
       "size": "40",
       "color": "green",
       "inStock": true,
+      "quantity": 9,
       "brand": "Puma"
     },
     {
@@ -240,6 +261,7 @@
       "size": "44",
       "color": "white",
       "inStock": true,
+      "quantity": 9,
       "brand": "Puma"
     },
     {
@@ -251,6 +273,7 @@
       "size": "40",
       "color": "white",
       "inStock": true,
+      "quantity": 9,
       "brand": "Nike"
     },
     {
@@ -262,6 +285,7 @@
       "size": "38",
       "color": "Black",
       "inStock": false,
+      "quantity": 9,
       "brand": "Puma"
     },
     {
@@ -273,6 +297,7 @@
       "size": "38",
       "color": "perple",
       "inStock": true,
+      "quantity": 9,
       "brand": "Armani"
     },
     {
@@ -284,6 +309,7 @@
       "size": "42",
       "color": "red",
       "inStock": true,
+      "quantity": 9,
       "brand": "Armani"
     },
     {
@@ -295,6 +321,7 @@
       "size": "42",
       "color": "yellow",
       "inStock": true,
+      "quantity": 9,
       "brand": "BOSS"
     },
     {
@@ -306,6 +333,7 @@
       "size": "26",
       "color": "green",
       "inStock": true,
+      "quantity": 9,
       "brand": "Nike"
     },
     {
@@ -317,6 +345,7 @@
       "size": "38",
       "color": "perple",
       "inStock": true,
+      "quantity": 9,
       "brand": "Nike"
     },
     {
@@ -328,6 +357,7 @@
       "size": "26",
       "color": "yellow",
       "inStock": true,
+      "quantity": 9,
       "brand": "Adidas"
     },
     {
@@ -339,6 +369,7 @@
       "size": "48",
       "color": "yellow",
       "inStock": true,
+      "quantity": 9,
       "brand": "Adidas"
     }
   ]

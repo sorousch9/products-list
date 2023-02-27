@@ -26,8 +26,8 @@ import { Fragment } from "react";
 
 var today = new Date();
 var threeDaysLater = new Date();
-threeDaysLater.setDate(today.getDate() + 3)
-var dayDate = threeDaysLater.toLocaleDateString()
+threeDaysLater.setDate(today.getDate() + 3);
+var dayDate = threeDaysLater.toLocaleDateString();
 const Cart: React.FC = () => {
   return (
     <Fragment>
