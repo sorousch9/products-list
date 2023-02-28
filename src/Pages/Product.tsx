@@ -44,9 +44,11 @@ interface ProductT {
   brand: string;
   color: string[];
   size: string[];
+  quantity: number;
 }
 
-const Item = styled(Paper)(({ theme }) => ({
+
+const ItemMUI = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
   ...theme.typography.body2,
   padding: theme.spacing(1),
@@ -59,12 +61,14 @@ const Product: React.FC = () => {
   const [size, setSize] = useState("");
   const [color, setColor] = useState("");
   const dispatch = useAppDispatch();
-  const addToCart = (product) => {
+  const addToCart = (product: ProductT) => {
     dispatch(addProduct({ ...product }));
     dispatch(getCartCount());
     dispatch(getSubTotal());
     dispatch(getTotalAmount());
   };
+  useEffect(() => {}, [dispatch]);
+
   useEffect(() => {
     axios
       .get<ProductT>(`http://localhost:3004/products/${id}`)
@@ -93,8 +97,6 @@ const Product: React.FC = () => {
     console.info("You clicked a breadcrumb.");
   }
 
-
-
   return (
     <Fragment>
       <Navbar />
@@ -112,7 +114,7 @@ const Product: React.FC = () => {
         </div>
         <Grid container spacing={3}>
           <Grid xs={12} md={7}>
-            <Item>
+            <ItemMUI>
               <Card>
                 <CardMedia
                   sx={{ height: 650 }}
@@ -120,21 +122,21 @@ const Product: React.FC = () => {
                   title={product.name}
                 />
               </Card>
-            </Item>
+            </ItemMUI>
           </Grid>
           <Grid xs md>
             <Stack direction="column" justifyContent="space-around" spacing={2}>
-              <Item>
+              <ItemMUI>
                 <Typography variant="h4">{product.name}</Typography>
                 <Typography gutterBottom>Brand : {product.brand}</Typography>
-              </Item>
-              <Item>
+              </ItemMUI>
+              <ItemMUI>
                 <Typography sx={{ textAlign: "left" }}>
                   {product.description}
                 </Typography>
-              </Item>
+              </ItemMUI>
 
-              <Item>
+              <ItemMUI>
                 <FormControl sx={{ m: 2, minWidth: 180 }}>
                   <InputLabel id="demo-simple-select-autowidth-label">
                     Size
@@ -188,21 +190,21 @@ const Product: React.FC = () => {
                     Required *
                   </FormHelperText>
                 </FormControl>
-              </Item>
-              <Item sx={{ textAlign: "left" }}>
+              </ItemMUI>
+              <ItemMUI sx={{ textAlign: "left" }}>
                 <Typography variant="h5" color={blueGrey[900]}>
                   Price : $ {product.price}
                 </Typography>
                 <Typography variant="caption">
                   <strong>inkl. MwSt. zzgl.</strong> Versandkosten
                 </Typography>
-              </Item>
-              <Item sx={{ textAlign: "left" }}>
+              </ItemMUI>
+              <ItemMUI sx={{ textAlign: "left" }}>
                 <Typography variant="body1">Seller: Olano GmbH</Typography>
                 <Typography variant="caption">
                   AGB Datenschutz Impressum
                 </Typography>
-              </Item>
+              </ItemMUI>
               <Button
                 variant="contained"
                 endIcon={<AddShoppingCartIcon />}
@@ -221,7 +223,7 @@ const Product: React.FC = () => {
             </Stack>
           </Grid>
         </Grid>
-        <Item sx={{ textAlign: "left" }}>
+        <ItemMUI sx={{ textAlign: "left" }}>
           <Typography>Customer reviews</Typography>
           <Rating
             name="half-rating-read"
@@ -229,7 +231,7 @@ const Product: React.FC = () => {
             precision={0.5}
             readOnly
           />
-        </Item>
+        </ItemMUI>
       </Box>
     </Fragment>
   );

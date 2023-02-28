@@ -4,7 +4,13 @@ import produce from "immer";
 interface Item {
   id: string;
   name: string;
+  description: string;
   price: number;
+  img: string;
+  inStock: boolean;
+  brand: string;
+  color: string[];
+  size: string[];
   quantity: number;
 }
 interface CartState {
