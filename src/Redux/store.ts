@@ -3,7 +3,7 @@ import cartReducer from "./cartRedux";
 
 export const store = configureStore({
   reducer: {
-    products: cartReducer,
+    cart: cartReducer,
   },
 })
 

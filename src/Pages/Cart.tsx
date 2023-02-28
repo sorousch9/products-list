@@ -23,15 +23,17 @@ import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Navbar from "../Components/Navbar";
 import { Fragment } from "react";
-
-
+import { useAppDispatch, useAppSelector } from "../Components/Hooks/hooks";
 
 var today = new Date();
 var threeDaysLater = new Date();
 threeDaysLater.setDate(today.getDate() + 3);
 var dayDate = threeDaysLater.toLocaleDateString();
 const Cart: React.FC = () => {
-
+  const dispatch = useAppDispatch();
+  const { products, subAmount, totalAmount } = useAppSelector(
+    (state) => state.cart
+  );
 
   return (
     <Fragment>
