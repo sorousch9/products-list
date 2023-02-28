@@ -55,8 +55,44 @@ export const cartSlice = createSlice({
         return acc + product.price * product.quantity;
       }, 0);
     },
+    incrementQuantity: (state, action) => {
+      let index = state.products.findIndex(
+        (product) => product.id === action.payload
+      );
+      state.products[index].quantity += 1;
+    },
+    decrementQuantity: (state, action) => {
+      let index = state.products.findIndex(
+        (product) => product.id === action.payload
+      );
+      if (state.products[index].quantity <= 0) {
+        state.products[index].quantity = 0;
+      } else {
+        state.products[index].quantity -= 1;
+      }
+    },
+    removeProduct: (state, action) => {
+      let index = state.products.findIndex(
+        (product) => product.id === action.payload
+      );
+      if (index !== -1) {
+        state.products.splice(index, 1);
+      }
+    },
+    getTotalAmount: (state) => {
+      state.totalAmount = state.subAmount + 3.5;
+    },
   },
 });
 
-export const { addProduct } = cartSlice.actions;
+export const {
+  getTotalAmount,
+  addProduct,
+  incrementQuantity,
+  decrementQuantity,
+  removeProduct,
+  getCartProducts,
+  getCartCount,
+  getSubTotal,
+} = cartSlice.actions;
 export default cartSlice.reducer;

@@ -24,11 +24,15 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import Navbar from "../Components/Navbar";
 import { Fragment } from "react";
 
+
+
 var today = new Date();
 var threeDaysLater = new Date();
 threeDaysLater.setDate(today.getDate() + 3);
 var dayDate = threeDaysLater.toLocaleDateString();
 const Cart: React.FC = () => {
+
+
   return (
     <Fragment>
       <Navbar />
