@@ -26,6 +26,13 @@ import { Stack } from "@mui/system";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import Navbar from "../Components/Navbar";
+import {
+  addProduct,
+  getCartCount,
+  getSubTotal,
+  getTotalAmount,
+} from "../Redux/cartRedux";
+import { useAppDispatch } from "../Components/Hooks/hooks";
 
 interface ProductT {
   id: string;
@@ -51,7 +58,13 @@ const Product: React.FC = () => {
   const [product, setProduct] = useState<ProductT | null>(null);
   const [size, setSize] = useState("");
   const [color, setColor] = useState("");
-
+  const dispatch = useAppDispatch();
+  const addToCart = (product) => {
+    dispatch(addProduct({ ...product }));
+    dispatch(getCartCount());
+    dispatch(getSubTotal());
+    dispatch(getTotalAmount());
+  };
   useEffect(() => {
     axios
       .get<ProductT>(`http://localhost:3004/products/${id}`)
@@ -79,6 +92,8 @@ const Product: React.FC = () => {
     event.preventDefault();
     console.info("You clicked a breadcrumb.");
   }
+
+
 
   return (
     <Fragment>
@@ -188,7 +203,13 @@ const Product: React.FC = () => {
                   AGB Datenschutz Impressum
                 </Typography>
               </Item>
-              <Button variant="contained" endIcon={<AddShoppingCartIcon />}>
+              <Button
+                variant="contained"
+                endIcon={<AddShoppingCartIcon />}
+                onClick={() => {
+                  addToCart(product);
+                }}
+              >
                 Add to Cart
               </Button>
               <Button variant="outlined" endIcon={<FavoriteBorderIcon />}>

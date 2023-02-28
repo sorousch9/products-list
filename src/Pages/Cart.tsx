@@ -22,8 +22,17 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Navbar from "../Components/Navbar";
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../Components/Hooks/hooks";
+import {
+  getTotalAmount,
+  incrementQuantity,
+  decrementQuantity,
+  removeProduct,
+  getCartProducts,
+  getCartCount,
+  getSubTotal,
+} from "../Redux/cartRedux";
 
 var today = new Date();
 var threeDaysLater = new Date();
@@ -34,6 +43,15 @@ const Cart: React.FC = () => {
   const { products, subAmount, totalAmount } = useAppSelector(
     (state) => state.cart
   );
+
+
+  useEffect(() => {
+    dispatch(getCartProducts());
+    dispatch(getSubTotal());
+    dispatch(getCartCount());
+    dispatch(getTotalAmount());
+  }, [dispatch]);
+
 
   return (
     <Fragment>
@@ -48,6 +66,7 @@ const Cart: React.FC = () => {
             paddingBottom: "1rem",
             alignItems: "start",
           }}
+      
         >
           <Grid item sm={12} md={8}>
             <TableContainer component={Paper} elevation={6}>
