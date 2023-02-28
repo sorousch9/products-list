@@ -1,19 +1,27 @@
-import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
-import { RootState } from "./store";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface ProductsT {
-  products: [];
+interface Item {
+  id: string;
+  name: string;
+  price: number;
+  quantity: number;
 }
-const initialState: ProductsT = {
+interface CartState {
+  products: Array<Item>;
+  total: number;
+}
+
+const initialState: CartState = {
   products: [],
+  total: 0
 };
+
 export const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
     addProduct: {
-      reducer: (state, action) => {
+      reducer: (state, action: PayloadAction<Item>) => {
         let cartIndex = state.products.findIndex(
           (product) => product.id === action.payload.id
         );
@@ -23,8 +31,11 @@ export const cartSlice = createSlice({
           state.products.push({ ...action.payload, quantity: 1 });
         }
       },
-    },
-  },
+      prepare: (item: Item) => {
+        return { payload: item };
+      }
+    }
+  }
 });
 
 export const { addProduct } = cartSlice.actions;
