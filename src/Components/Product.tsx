@@ -7,6 +7,7 @@ import AddIcon from "@mui/icons-material/Add";
 import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
 
+
 interface ProductT {
   product?: {
     id: string;
@@ -18,6 +19,8 @@ interface ProductT {
 }
 
 const Product: React.FC<ProductT> = ({ product }) => {
+
+
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
@@ -29,8 +32,7 @@ const Product: React.FC<ProductT> = ({ product }) => {
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           <Link
-          className="Links"
-          
+            className="Links"
             to={`http://localhost:3000/product/${product?.id}`}
           >
             {product?.name}
@@ -41,7 +43,12 @@ const Product: React.FC<ProductT> = ({ product }) => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button variant="outlined" size="small" endIcon={<AddIcon />}>
+        <Button
+          variant="outlined"
+          size="small"
+          endIcon={<AddIcon />}
+      
+        >
           Add to Cart
         </Button>
       </CardActions>

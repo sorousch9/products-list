@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import produce from "immer";
 
 interface Item {
   id: string;
@@ -11,6 +12,7 @@ interface CartState {
   total: number;
   subAmount: number;
   totalAmount: number;
+  tax: number;
 }
 
 const initialState: CartState = {
@@ -18,6 +20,7 @@ const initialState: CartState = {
   total: 0,
   subAmount: 0,
   totalAmount: 0,
+  tax: 0,
 };
 
 export const cartSlice = createSlice({
@@ -26,7 +29,7 @@ export const cartSlice = createSlice({
   reducers: {
     addProduct: {
       reducer: (state, action: PayloadAction<Item>) => {
-        let cartIndex = state.products.findIndex(
+        const cartIndex = state.products.findIndex(
           (product) => product.id === action.payload.id
         );
         if (cartIndex >= 0) {
@@ -45,10 +48,9 @@ export const cartSlice = createSlice({
       };
     },
     getCartCount: (state) => {
-      let cartCount = state.products.reduce((total, product) => {
+      state.total = state.products.reduce((total, product) => {
         return product.quantity + total;
       }, 0);
-      state.total = cartCount;
     },
     getSubTotal: (state) => {
       state.subAmount = state.products.reduce((acc, product) => {
@@ -56,31 +58,40 @@ export const cartSlice = createSlice({
       }, 0);
     },
     incrementQuantity: (state, action) => {
-      let index = state.products.findIndex(
+      const index = state.products.findIndex(
         (product) => product.id === action.payload
       );
-      state.products[index].quantity += 1;
+      produce(state, (draftState) => {
+        draftState.products[index].quantity += 1;
+      });
     },
     decrementQuantity: (state, action) => {
-      let index = state.products.findIndex(
+      const index = state.products.findIndex(
         (product) => product.id === action.payload
       );
-      if (state.products[index].quantity <= 0) {
-        state.products[index].quantity = 0;
-      } else {
-        state.products[index].quantity -= 1;
-      }
+      produce(state, (draftState) => {
+        if (draftState.products[index].quantity <= 0) {
+          draftState.products[index].quantity = 0;
+        } else {
+          draftState.products[index].quantity -= 1;
+        }
+      });
     },
     removeProduct: (state, action) => {
-      let index = state.products.findIndex(
+      const index = state.products.findIndex(
         (product) => product.id === action.payload
       );
       if (index !== -1) {
-        state.products.splice(index, 1);
+        produce(state, (draftState) => {
+          draftState.products.splice(index, 1);
+        });
       }
     },
     getTotalAmount: (state) => {
       state.totalAmount = state.subAmount + 3.5;
+    },
+    calculateTax: (state) => {
+      state.tax = (19 / 100) * state.subAmount;
     },
   },
 });
@@ -95,4 +106,5 @@ export const {
   getCartCount,
   getSubTotal,
 } = cartSlice.actions;
+
 export default cartSlice.reducer;
