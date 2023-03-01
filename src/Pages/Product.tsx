@@ -31,22 +31,9 @@ import {
   getCartCount,
   getSubTotal,
   getTotalAmount,
+  ProductType,
 } from "../Redux/cartRedux";
 import { useAppDispatch } from "../Components/Hooks/hooks";
-
-interface ProductT {
-  id: string;
-  name: string;
-  description: string;
-  price: number;
-  img: string;
-  inStock: boolean;
-  brand: string;
-  color: string[];
-  size: string[];
-  quantity: number;
-}
-
 
 const ItemMUI = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -57,11 +44,11 @@ const ItemMUI = styled(Paper)(({ theme }) => ({
 }));
 const Product: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const [product, setProduct] = useState<ProductT | null>(null);
+  const [product, setProduct] = useState<ProductType | null>(null);
   const [size, setSize] = useState("");
   const [color, setColor] = useState("");
   const dispatch = useAppDispatch();
-  const addToCart = (product: ProductT) => {
+  const addToCart = (product: ProductType) => {
     dispatch(addProduct({ ...product }));
     dispatch(getCartCount());
     dispatch(getSubTotal());
@@ -71,7 +58,7 @@ const Product: React.FC = () => {
 
   useEffect(() => {
     axios
-      .get<ProductT>(`http://localhost:3004/products/${id}`)
+      .get<ProductType>(`http://localhost:3004/products/${id}`)
       .then((response) => {
         setProduct(response.data);
       });
@@ -94,7 +81,6 @@ const Product: React.FC = () => {
 
   function handleClick(event: React.MouseEvent<HTMLDivElement, MouseEvent>) {
     event.preventDefault();
-    console.info("You clicked a breadcrumb.");
   }
 
   return (

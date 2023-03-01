@@ -22,18 +22,8 @@ import {
   PaginationItem,
 } from "@mui/material";
 import axios from "axios";
+import { ProductType } from "../Redux/cartRedux";
 
-interface ApiResponse {
-  id: string;
-  name: string;
-  description: string;
-  price: number;
-  img: string;
-  inStock: boolean;
-  brand: string;
-  color: string | string[];
-  size: string | string[];
-}
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -75,7 +65,7 @@ interface Filters {
 }
 
 const ProductList: React.FC = () => {
-  const [products, setProducts] = useState<ApiResponse[]>([]);
+  const [products, setProducts] = useState<ProductType[]>([]);
   const [countPrdoducts, setCountPrdoducts] = useState(10);
   const [filters, setFilters] = useState<Filters>({
     size: [],
@@ -122,7 +112,7 @@ const ProductList: React.FC = () => {
         }
       });
 
-      const response = await axios.get<ApiResponse[]>(
+      const response = await axios.get<ProductType[]>(
         `http://localhost:3004/products?_page=${pageNumber}&_limit=${pageLimit}&${params.toString()}`
       );
       setProducts(response.data);

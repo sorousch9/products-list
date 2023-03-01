@@ -1,6 +1,5 @@
 import {
   Container,
-  Grid,
   Table,
   TableBody,
   TableCell,
@@ -13,8 +12,6 @@ import {
   ListItemAvatar,
   Avatar,
   ListItemText,
-  Card,
-  CardContent,
   Typography,
 } from "@mui/material";
 import pay from "../../src/Assets/cartPayment.png";
@@ -33,6 +30,18 @@ import {
   getCartCount,
   getSubTotal,
 } from "../Redux/cartRedux";
+import { Link } from "react-router-dom";
+import { styled } from "@mui/material/styles";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Unstable_Grid2";
+const Item = styled(Paper)(({ theme }) => ({
+  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: "center",
+  minHeight: "5rem",
+  color: theme.palette.text.secondary,
+}));
 
 var today = new Date();
 var threeDaysLater = new Date();
@@ -40,10 +49,9 @@ threeDaysLater.setDate(today.getDate() + 3);
 var dayDate = threeDaysLater.toLocaleDateString();
 const Cart: React.FC = () => {
   const dispatch = useAppDispatch();
-  const { products, subAmount, totalAmount } = useAppSelector(
+  const { products, subAmount, totalAmount, shipPrice } = useAppSelector(
     (state) => state.cart
   );
-
 
   useEffect(() => {
     dispatch(getCartProducts());
@@ -51,14 +59,13 @@ const Cart: React.FC = () => {
     dispatch(getCartCount());
     dispatch(getTotalAmount());
   }, [dispatch]);
-
+  console.log(products);
 
   return (
     <Fragment>
       <Navbar />
       <Container maxWidth="lg" sx={{ backgroundColor: "#f3f3f3" }}>
         <Grid
-          item
           container
           sx={{
             justifyContent: "space-evenly",
@@ -66,10 +73,13 @@ const Cart: React.FC = () => {
             paddingBottom: "1rem",
             alignItems: "start",
           }}
-      
         >
-          <Grid item sm={12} md={8}>
-            <TableContainer component={Paper} elevation={6}>
+          <Grid sm={12} md={8}>
+            <TableContainer
+              component={Paper}
+              elevation={3}
+              sx={{ minHeight: "30vh" }}
+            >
               <Table>
                 <TableHead>
                   <TableRow>
@@ -80,74 +90,106 @@ const Cart: React.FC = () => {
                     <TableCell align="right">Actions</TableCell>
                   </TableRow>
                 </TableHead>
-                <TableBody>
-                  <TableRow>
-                    <TableCell>
-                      <ListItem sx={{ paddingLeft: "2px" }}>
-                        <ListItemAvatar>
-                          <Avatar
-                            alt="product 1"
-                            src="https://images.pexels.com/photos/13802279/pexels-photo-13802279.jpeg?auto=compress&cs=tinysrgb&w=1600"
-                            sx={{
-                              width: 62,
-                              height: 62,
-                              marginRight: "1rem",
+                {products.length > 0 ? (
+                  products.map((product) => (
+                    <TableBody key={product.id}>
+                      <TableRow>
+                        <TableCell>
+                          <ListItem sx={{ paddingLeft: "2px" }}>
+                            <ListItemAvatar>
+                              <Avatar
+                                alt="product 1"
+                                src={product.img}
+                                sx={{
+                                  width: 62,
+                                  height: 62,
+                                  marginRight: "1rem",
+                                }}
+                              />
+                            </ListItemAvatar>
+                            <Link
+                              to={`/product/${product.id}`}
+                              className="Links"
+                            >
+                              <ListItemText
+                                primary={product.name}
+                                secondary={`Color: ${product.color} Size: ${product.size}`}
+                              />
+                            </Link>
+                          </ListItem>
+                        </TableCell>
+                        <TableCell align="right">$ {product.price}</TableCell>
+                        <TableCell align="right">
+                          <IconButton
+                            aria-label="remove item"
+                            size="small"
+                            onClick={() => {
+                              dispatch(decrementQuantity(product.id));
+                              dispatch(getSubTotal());
+                              dispatch(getCartCount());
+                              dispatch(getTotalAmount());
                             }}
-                          />
-                        </ListItemAvatar>
-                        <ListItemText
-                          primary="Product name 1"
-                          secondary="Color: black Size:32"
-                        />
-                      </ListItem>
-                    </TableCell>
-                    <TableCell align="right">$44</TableCell>
-                    <TableCell align="right">
-                      <IconButton aria-label="remove item" size="small">
-                        <RemoveIcon fontSize="small" />
-                      </IconButton>
-                      4
-                      <IconButton aria-label="add item" size="small">
-                        <AddIcon fontSize="small" />
-                      </IconButton>
-                    </TableCell>
-                    <TableCell align="right">$44</TableCell>
-                    <TableCell align="right">
-                      <IconButton aria-label="remove item" size="small">
-                        <DeleteIcon fontSize="small" />
-                      </IconButton>
-                    </TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell colSpan={3} align="right">
-                      Subtotal
-                    </TableCell>
-                    <TableCell align="right">$ 36</TableCell>
-                  </TableRow>
-                </TableBody>
+                          >
+                            <RemoveIcon fontSize="small" />
+                          </IconButton>
+                          {product.quantity}
+                          <IconButton
+                            aria-label="add item"
+                            size="small"
+                            onClick={() => {
+                              dispatch(incrementQuantity(product.id));
+                              dispatch(getSubTotal());
+                              dispatch(getCartCount());
+                              dispatch(getTotalAmount());
+                            }}
+                          >
+                            <AddIcon fontSize="small" />
+                          </IconButton>
+                        </TableCell>
+                        <TableCell align="right">
+                          ${(product.price * product.quantity).toFixed(2)}
+                        </TableCell>
+                        <TableCell align="right">
+                          <IconButton
+                            aria-label="remove item"
+                            size="small"
+                            onClick={() => {
+                              dispatch(removeProduct(product.id));
+                              dispatch(getSubTotal());
+                              dispatch(getCartCount());
+                              dispatch(getTotalAmount());
+                            }}
+                          >
+                            <DeleteIcon fontSize="small" />
+                          </IconButton>
+                        </TableCell>
+                      </TableRow>
+                      <TableRow>
+                        <TableCell colSpan={3} align="right">
+                          Subtotal
+                        </TableCell>
+                        <TableCell align="right">$ 36</TableCell>
+                      </TableRow>
+                    </TableBody>
+                  ))
+                ) : (
+                  <TableBody >
+                    <TableRow>
+                      <TableCell sx={{ fontSize: "1rem"}}>
+                        There is no item in your shopping cart
+                      </TableCell>
+                    </TableRow>
+                  </TableBody>
+                )}
               </Table>
             </TableContainer>
-            <Card sx={{ marginTop: "1rem" }} elevation={3}>
-              <CardContent>
-                <Typography variant="h5" component="div">
-                  Estimated delivery
-                </Typography>
-                <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                  {dayDate}
-                </Typography>
-              </CardContent>
-            </Card>
-            <Card sx={{ marginTop: "1rem" }} elevation={3}>
-              <CardContent>
-                <Typography variant="h5" component="div">
-                  We accept
-                </Typography>
-                <img src={pay} alt="payimage" style={{ width: "100%" }} />
-              </CardContent>
-            </Card>
           </Grid>
-          <Grid item sm={12} md={3}>
-            <TableContainer component={Paper} elevation={3}>
+          <Grid sm={12} md={3}>
+            <TableContainer
+              component={Paper}
+              elevation={3}
+              sx={{ minHeight: "30vh" }}
+            >
               <Table>
                 <TableHead>
                   <TableRow>
@@ -159,31 +201,58 @@ const Cart: React.FC = () => {
                 <TableBody>
                   <TableRow>
                     <TableCell align="left">Subtotal</TableCell>
-                    <TableCell align="right">$32</TableCell>
+                    <TableCell align="right">${subAmount.toFixed(2)}</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell align="left">Delivery</TableCell>
-                    <TableCell align="right">$3</TableCell>
+                    <TableCell align="right">
+                      ${subAmount > 1 ? shipPrice : "0"}
+                    </TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell align="left">
-                      <strong>Total (VAT included)</strong>
+                      <strong>Total (including tax)</strong>
                     </TableCell>
-                    <TableCell align="right">$32</TableCell>
+                    <TableCell align="right">
+                      ${totalAmount.toFixed(2)}
+                    </TableCell>
                   </TableRow>
                 </TableBody>
               </Table>
             </TableContainer>
-            <Card sx={{ marginTop: "1rem" }} elevation={3}>
-              <CardContent>
+          </Grid>
+        </Grid>
+      </Container>
+      {shipPrice > 0 ? (
+        <Typography sx={{ m: 3 }} color="text.secondary">
+          If your bag is over 49,99 € you will qualify for free shipping
+        </Typography>
+      ) : (
+        ""
+      )}
+      <Container maxWidth="lg" sx={{ backgroundColor: "#f3f3f3" }}>
+        <Box>
+          <Grid container spacing={2} columns={16}>
+            <Grid xs={8}>
+              <Item>
+                <Typography variant="h5" component="div">
+                  Estimated delivery
+                </Typography>
+                <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                  {dayDate}
+                </Typography>
+              </Item>
+            </Grid>
+            <Grid xs={8}>
+              <Item>
                 <Typography variant="h5" component="div">
                   We accept
                 </Typography>
                 <img src={pay} alt="payimage" style={{ width: "100%" }} />
-              </CardContent>
-            </Card>
+              </Item>
+            </Grid>
           </Grid>
-        </Grid>
+        </Box>
       </Container>
     </Fragment>
   );

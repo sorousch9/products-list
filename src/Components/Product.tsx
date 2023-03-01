@@ -6,40 +6,51 @@ import CardMedia from "@mui/material/CardMedia";
 import AddIcon from "@mui/icons-material/Add";
 import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
+import { useAppDispatch } from "./Hooks/hooks";
+import {
+  addProduct,
+  getCartCount,
+  getSubTotal,
+  getTotalAmount,
+  ProductType,
+} from "../Redux/cartRedux";
+import { useEffect } from "react";
 
-
-interface ProductT {
-  product?: {
-    id: string;
-    name: string;
-    description: string;
-    price: number;
-    img: string;
-  };
+interface ItemType {
+  product: ProductType;
 }
 
-const Product: React.FC<ProductT> = ({ product }) => {
-
-
+const Product: React.FC<ItemType> = ({ product }) => {
+  const dispatch = useAppDispatch();
+  useEffect(() => {}, [dispatch]);
+  if (!product) {
+    return null
+  }
+  const addToCart = (product: ProductType) => {
+    dispatch(addProduct({ ...product }));
+    dispatch(getCartCount());
+    dispatch(getSubTotal());
+    dispatch(getTotalAmount());
+  };
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
         component="img"
-        alt={product?.name}
+        alt={product.name}
         height="140"
-        image={product?.img}
+        image={product.img}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           <Link
             className="Links"
-            to={`http://localhost:3000/product/${product?.id}`}
+            to={`http://localhost:3000/product/${product.id}`}
           >
-            {product?.name}
+            {product.name}
           </Link>
         </Typography>
         <Typography>
-          Price: <strong>${product?.price}</strong>
+          Price: <strong>${product.price}</strong>
         </Typography>
       </CardContent>
       <CardActions>
@@ -47,7 +58,9 @@ const Product: React.FC<ProductT> = ({ product }) => {
           variant="outlined"
           size="small"
           endIcon={<AddIcon />}
-      
+          onClick={() => {
+            addToCart(product);
+          }}
         >
           Add to Cart
         </Button>
