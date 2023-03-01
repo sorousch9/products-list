@@ -59,7 +59,6 @@ const Cart: React.FC = () => {
     dispatch(getCartCount());
     dispatch(getTotalAmount());
   }, [dispatch]);
-  console.log(products);
 
   return (
     <Fragment>
@@ -173,9 +172,9 @@ const Cart: React.FC = () => {
                     </TableBody>
                   ))
                 ) : (
-                  <TableBody >
+                  <TableBody>
                     <TableRow>
-                      <TableCell sx={{ fontSize: "1rem"}}>
+                      <TableCell sx={{ fontSize: "1rem" }}>
                         There is no item in your shopping cart
                       </TableCell>
                     </TableRow>
