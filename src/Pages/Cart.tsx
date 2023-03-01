@@ -132,6 +132,7 @@ const Cart: React.FC = () => {
                             <RemoveIcon fontSize="small" />
                           </IconButton>
                           {product.quantity}
+
                           <IconButton
                             aria-label="add item"
                             size="small"

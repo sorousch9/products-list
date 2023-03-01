@@ -14,7 +14,6 @@ export interface ProductType {
   color: string[];
   size: string[];
   quantity: number;
-  amount: number;
 }
 interface CartState {
   products: Array<ProductType>;
@@ -47,13 +46,29 @@ export const cartSlice = createSlice({
           (product) => product.id === item.id
         );
         if (existingProduct) {
-          state.products = state.products.map((product) =>
-            product.id === item.id
-              ? { ...product, quantity: product.quantity + 1 }
-              : product
-          );
+          // Check if product is in stock and available inventory is greater than requested quantity
+          if (
+            item.inStock &&
+            item.quantity + existingProduct.quantity < item.quantity
+          ) {
+            state.products = state.products.map((product) =>
+              product.id === item.id
+                ? { ...product, quantity: product.quantity + 1 }
+                : product
+            );
+          } else {
+            // Set the quantity to the maximum available quantity
+            state.products = state.products.map((product) =>
+              product.id === item.id
+                ? { ...product, quantity: item.quantity }
+                : product
+            );
+          }
         } else {
-          state.products.push({ ...item, quantity: 1 });
+          // Check if product is in stock and available inventory is greater than requested quantity
+          if (item.inStock && item.quantity > 0) {
+            state.products.push({ ...item, quantity: 1 });
+          }
         }
       },
       prepare: (item: ProductType) => {
