@@ -15,9 +15,11 @@ import { PersonAdd, Settings, Logout } from "@mui/icons-material";
 import { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import { useAppSelector } from "./Hooks/hooks";
 export default function Navbar() {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+  const { total } = useAppSelector((state) => state.cart);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
@@ -32,10 +34,12 @@ export default function Navbar() {
           alignItems: "center",
           textAlign: "center",
           justifyContent: "flex-end",
-          borderBottom:"1px solid #cdcdcd"
+          borderBottom: "1px solid #cdcdcd",
         }}
       >
-        <Link to="/" className="Links" style={{ minWidth: 80 }}>Home</Link>
+        <Link to="/" className="Links" style={{ minWidth: 80 }}>
+          Home
+        </Link>
         <Typography sx={{ minWidth: 100 }}>Contact</Typography>
         <Link to="/cart" className="Links">
           <Stack
@@ -47,7 +51,7 @@ export default function Navbar() {
             }}
           >
             Cart
-            <Badge badgeContent={4} color="success">
+            <Badge badgeContent={total} color="success">
               <ShoppingCartOutlinedIcon color="action" />
             </Badge>
           </Stack>
