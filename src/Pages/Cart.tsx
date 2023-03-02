@@ -1,3 +1,4 @@
+import { Fragment, useEffect } from "react";
 import {
   Container,
   Table,
@@ -13,13 +14,14 @@ import {
   Avatar,
   ListItemText,
   Typography,
+  styled,
+  Box,
 } from "@mui/material";
 import pay from "../../src/Assets/cartPayment.png";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Navbar from "../Components/Navbar";
-import { Fragment, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../Components/Hooks/hooks";
 import {
   getTotalAmount,
@@ -31,9 +33,9 @@ import {
   getSubTotal,
 } from "../Redux/cartRedux";
 import { Link } from "react-router-dom";
-import { styled } from "@mui/material/styles";
-import Box from "@mui/material/Box";
 import Grid from "@mui/material/Unstable_Grid2";
+import { Stack } from "@mui/system";
+import CustomButton from "../UI/CustomButton";
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
   ...theme.typography.body2,
@@ -52,7 +54,6 @@ const Cart: React.FC = () => {
   const { products, subAmount, totalAmount, shipPrice } = useAppSelector(
     (state) => state.cart
   );
-  console.log(products);
   useEffect(() => {
     dispatch(getCartProducts());
     dispatch(getSubTotal());
@@ -225,6 +226,15 @@ const Cart: React.FC = () => {
                   </TableRow>
                 </TableBody>
               </Table>
+              <Stack spacing={2} m={2}>
+                <CustomButton
+                  onClick={() => {
+                    alert("checkout");
+                  }}
+                >
+                  Go to checkout
+                </CustomButton>
+              </Stack>
             </TableContainer>
           </Grid>
         </Grid>
