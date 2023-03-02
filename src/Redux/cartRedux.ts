@@ -4,7 +4,7 @@ interface AddProductPayload {
 }
 
 export interface ProductType {
-  id: string;
+  id: number;
   name: string;
   description: string;
   price: number;

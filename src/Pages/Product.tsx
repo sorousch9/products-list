@@ -124,14 +124,14 @@ const Product: React.FC = () => {
 
               <ItemMUI>
                 <FormControl sx={{ m: 2, minWidth: 180 }}>
-                  <InputLabel id="demo-simple-select-autowidth-label">
+                  <InputLabel id="Size">
                     Size
                   </InputLabel>
                   <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
+                    labelId="Size"
+                    id="Size"
                     value={size}
-                    label="Value"
+                    label="Size"
                     onChange={handleChange}
                   >
                     {typeof product?.size === "object" ? (
@@ -149,14 +149,14 @@ const Product: React.FC = () => {
                   </FormHelperText>
                 </FormControl>
                 <FormControl sx={{ m: 2, minWidth: 180 }}>
-                  <InputLabel id="demo-simple-select-autowidth-label">
+                  <InputLabel id="Color">
                     Color
                   </InputLabel>
                   <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
+                    labelId="Color"
+                    id="Color"
                     value={color}
-                    label="Value"
+                    label="Color"
                     onChange={handleChange2}
                   >
                     {typeof product?.color === "object" ? (

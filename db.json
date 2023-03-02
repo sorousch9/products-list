@@ -1,7 +1,7 @@
 {
   "products": [
     {
-      "id": "1D2",
+      "id": 1,
       "name": "Product 1",
       "description": "This is a discription for this product",
       "price": 10,
@@ -13,7 +13,7 @@
       "brand": "Nike"
     },
     {
-      "id": "2D2",
+      "id": 2,
       "name": "Product 2",
       "description": "This is a discription for this product",
       "price": 20,
@@ -25,7 +25,7 @@
       "brand": "Puma"
     },
     {
-      "id": "3D2",
+      "id": 3,
       "name": "Product 3",
       "description": "This is a discription for this product",
       "price": 30,
@@ -37,7 +37,7 @@
       "brand": "Reebok"
     },
     {
-      "id": "4D2",
+      "id": 4,
       "name": "Product 4",
       "description": "This is a discription for this product",
       "price": 35,
@@ -49,7 +49,7 @@
       "brand": "Nike"
     },
     {
-      "id": "5D2",
+      "id": 5,
       "name": "Product 5",
       "description": "This is a discription for this product",
       "price": 100,
@@ -61,7 +61,7 @@
       "brand": "Nike"
     },
     {
-      "id": "6D2",
+      "id": 6,
       "name": "Product 6",
       "description": "This is a discription for this product",
       "price": 53,
@@ -73,7 +73,7 @@
       "brand": "Reebok"
     },
     {
-      "id": "7D2",
+      "id": 7,
       "name": "Product 7",
       "description": "This is a discription for this product",
       "price": 63,
@@ -85,7 +85,7 @@
       "brand": "Reebok"
     },
     {
-      "id": "8D2",
+      "id": 8,
       "name": "Product 8",
       "description": "This is a discription for this product",
       "price": 76,
@@ -97,7 +97,7 @@
       "brand": "Adidas"
     },
     {
-      "id": "9D2",
+      "id": 9,
       "name": "Product 9",
       "description": "This is a discription for this product",
       "price": 86,
@@ -109,7 +109,7 @@
       "brand": "Armani"
     },
     {
-      "id": "10D2",
+      "id": 10,
       "name": "Product 10",
       "description": "This is a discription for this product",
       "price": 34,
@@ -121,7 +121,7 @@
       "brand": "BOSS"
     },
     {
-      "id": "11D2",
+      "id": 11,
       "name": "Product 11",
       "description": "This is a discription for this product",
       "price": 25,
@@ -133,7 +133,7 @@
       "brand": "Adidas"
     },
     {
-      "id": "12D2",
+      "id": 12,
       "name": "Product 12",
       "description": "This is a discription for this product",
       "price": 75,
@@ -145,7 +145,7 @@
       "brand": "Puma"
     },
     {
-      "id": "13D2",
+      "id": 13,
       "name": "Product 13",
       "description": "This is a discription for this product",
       "price": 50,
@@ -157,7 +157,7 @@
       "brand": "Adidas"
     },
     {
-      "id": "14D2",
+      "id": 14,
       "name": "Product 14",
       "description": "This is a discription for this product",
       "price": 15,
@@ -169,7 +169,7 @@
       "brand": "Nike"
     },
     {
-      "id": "15D2",
+      "id": 15,
       "name": "Product 15",
       "description": "This is a discription for this product",
       "price": 65,
@@ -181,7 +181,7 @@
       "brand": "BOSS"
     },
     {
-      "id": "16D2",
+      "id": 16,
       "name": "Product 16",
       "description": "This is a discription for this product",
       "price": 65,
@@ -193,7 +193,7 @@
       "brand": "Nike"
     },
     {
-      "id": "17D2",
+      "id": 17,
       "name": "Product 17",
       "description": "This is a discription for this product",
       "price": 73,
@@ -205,7 +205,7 @@
       "brand": "Reebok"
     },
     {
-      "id": "18D2",
+      "id": 18,
       "name": "Product 18",
       "description": "This is a discription for this product",
       "price": 89,
@@ -217,7 +217,7 @@
       "brand": "Nike"
     },
     {
-      "id": "19D2",
+      "id": 19,
       "name": "Product 19",
       "description": "This is a discription for this product",
       "price": 98,
@@ -229,7 +229,7 @@
       "brand": "BOSS"
     },
     {
-      "id": "20D2",
+      "id": 20,
       "name": "Product 20",
       "description": "This is a discription for this product",
       "price": 43,
@@ -241,7 +241,7 @@
       "brand": "Nike"
     },
     {
-      "id": "21D2",
+      "id": 21,
       "name": "Product 21",
       "description": "This is a discription for this product",
       "price": 33,
@@ -253,7 +253,7 @@
       "brand": "Puma"
     },
     {
-      "id": "22D2",
+      "id": 22,
       "name": "Product 22",
       "description": "This is a discription for this product",
       "price": 40,
@@ -265,7 +265,7 @@
       "brand": "Puma"
     },
     {
-      "id": "23D2",
+      "id": 23,
       "name": "Product 23",
       "description": "This is a discription for this product",
       "price": 66,
@@ -277,7 +277,7 @@
       "brand": "Nike"
     },
     {
-      "id": "24D2",
+      "id": 24,
       "name": "Product 24",
       "description": "This is a discription for this product",
       "price": 77,
@@ -289,7 +289,7 @@
       "brand": "Puma"
     },
     {
-      "id": "25D2",
+      "id": 25,
       "name": "Product 25",
       "description": "This is a discription for this product",
       "price": 88,
@@ -301,7 +301,7 @@
       "brand": "Armani"
     },
     {
-      "id": "26D2",
+      "id": 26,
       "name": "Product 26",
       "description": "This is a discription for this product",
       "price": 77,
@@ -313,7 +313,7 @@
       "brand": "Armani"
     },
     {
-      "id": "27D2",
+      "id": 27,
       "name": "Product 27",
       "description": "This is a discription for this product",
       "price": 77,
@@ -325,7 +325,7 @@
       "brand": "BOSS"
     },
     {
-      "id": "28D2",
+      "id": 28,
       "name": "Product 28",
       "description": "This is a discription for this product",
       "price": 11,
@@ -337,7 +337,7 @@
       "brand": "Nike"
     },
     {
-      "id": "29D2",
+      "id": 29,
       "name": "Product 29",
       "description": "This is a discription for this product",
       "price": 23,
@@ -349,7 +349,7 @@
       "brand": "Nike"
     },
     {
-      "id": "30D2",
+      "id": 30,
       "name": "Product 30",
       "description": "This is a discription for this product",
       "price": 60,
@@ -361,7 +361,7 @@
       "brand": "Adidas"
     },
     {
-      "id": "31D2",
+      "id": 31,
       "name": "Product 31",
       "description": "This is a discription for this product",
       "price": 75,

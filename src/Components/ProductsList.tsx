@@ -20,10 +20,10 @@ import {
   TextField,
   Pagination,
   PaginationItem,
+  Typography,
 } from "@mui/material";
 import axios from "axios";
 import { ProductType } from "../Redux/cartRedux";
-
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -62,11 +62,13 @@ interface Filters {
   inStock: boolean;
   color: string[];
   brand: string[];
+  _sort:string,
+  _order:string
 }
 
 const ProductList: React.FC = () => {
   const [products, setProducts] = useState<ProductType[]>([]);
-  const [countPrdoducts, setCountPrdoducts] = useState(10);
+  const [countPrdoducts, setCountPrdoducts] = useState(9);
   const [filters, setFilters] = useState<Filters>({
     size: [],
     price_gte: 0,
@@ -74,13 +76,15 @@ const ProductList: React.FC = () => {
     inStock: true,
     color: [],
     brand: [],
+    _sort:"id",
+    _order:"asc"
   });
-
+  console.log(filters)
   const location = useLocation();
   const query = new URLSearchParams(location.search);
   const pageNumber = parseInt(query.get("page") || "1", 10);
 
-  let pageLimit: number = 10;
+  let pageLimit: number = 9;
 
   const handleFiltersChange = (event: SelectChangeEvent<string[]>) => {
     const { name, value } = event.target;
@@ -99,7 +103,11 @@ const ProductList: React.FC = () => {
   const handleInStockChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFilters({ ...filters, inStock: Boolean(event.target.checked) });
   };
-
+  const handleSortChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = event.target;
+    const [columnName, sortOrder] = value.split(' ');
+    setFilters({ ...filters, _order: sortOrder, _sort: columnName });
+  };
   useEffect(() => {
     const fetchProducts = async () => {
       const params = new URLSearchParams();
@@ -111,7 +119,6 @@ const ProductList: React.FC = () => {
           params.append(key, value);
         }
       });
-
       const response = await axios.get<ProductType[]>(
         `http://localhost:3004/products?_page=${pageNumber}&_limit=${pageLimit}&${params.toString()}`
       );
@@ -125,9 +132,29 @@ const ProductList: React.FC = () => {
   const totalPage = +(
     countPrdoducts < 10 ? 1 : countPrdoducts / pageLimit
   ).toFixed();
-
   return (
     <Box sx={{ flexGrow: 1 }}>
+      <Box
+        component="form"
+        sx={{
+          "& .MuiTextField-root": { m: 1, width: "25ch" },
+        }}
+        noValidate
+        autoComplete="off"
+      >
+        <TextField
+          id="sortInput"
+          select
+          label="Sort by ID"
+          defaultValue="id asc"
+          onChange={handleSortChange}
+        >
+          <MenuItem value="id asc" >Newest</MenuItem>
+          <MenuItem value="id desc">in Descending</MenuItem>
+          <MenuItem value="price asc">Lowest Price</MenuItem>
+          <MenuItem value="price desc">Highest Price</MenuItem>
+        </TextField>
+      </Box>
       <Grid container spacing={2}>
         <Grid xs={12} md={5} lg={4}>
           <Grid container spacing={0}>
@@ -154,10 +181,10 @@ const ProductList: React.FC = () => {
             </Item>
             <Item>
               <FormControl sx={{ m: 1, width: 300 }}>
-                <InputLabel id="demo-multiple-checkbox-label">Size</InputLabel>
+                <InputLabel id="Size">Size</InputLabel>
                 <Select
-                  labelId="demo-multiple-checkbox-label"
-                  id="demo-multiple-checkbox"
+                  labelId="Size"
+                  id="Size"
                   multiple
                   name="size"
                   value={filters.size}
@@ -177,10 +204,10 @@ const ProductList: React.FC = () => {
             <Item>
               {" "}
               <FormControl sx={{ m: 1, width: 300 }}>
-                <InputLabel id="demo-multiple-checkbox-label">Color</InputLabel>
+                <InputLabel id="Color">Color</InputLabel>
                 <Select
-                  labelId="demo-multiple-checkbox-label"
-                  id="demo-multiple-checkbox"
+                  labelId="Color"
+                  id="Color"
                   multiple
                   name="color"
                   value={filters.color}
