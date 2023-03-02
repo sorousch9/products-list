@@ -2,7 +2,6 @@ import Grid from "@mui/material/Unstable_Grid2";
 import {
   Select,
   SelectChangeEvent,
-  Button,
   Paper,
   Card,
   Box,
@@ -34,6 +33,7 @@ import {
   ProductType,
 } from "../Redux/cartRedux";
 import { useAppDispatch } from "../Components/Hooks/hooks";
+import CustomButton from "../UI/CustomButton";
 
 const ItemMUI = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -191,21 +191,24 @@ const Product: React.FC = () => {
                   AGB Datenschutz Impressum
                 </Typography>
               </ItemMUI>
-              <Button
-                variant="contained"
-                endIcon={<AddShoppingCartIcon />}
+              <CustomButton
+                variant="secondary"
+                style={{ fontWeight: "bold" }}
                 onClick={() => {
                   addToCart(product);
                 }}
               >
                 Add to Cart
-              </Button>
-              <Button variant="outlined" endIcon={<FavoriteBorderIcon />}>
+                <AddShoppingCartIcon style={{ paddingLeft: ".5rem" }} />
+              </CustomButton>
+              <CustomButton variant="secondary">
                 Remember Article
-              </Button>
-              <Button variant="outlined" endIcon={<ShareIcon />}>
+                <FavoriteBorderIcon style={{ paddingLeft: ".5rem" }} />
+              </CustomButton>
+              <CustomButton variant="secondary">
                 Share
-              </Button>
+                <ShareIcon style={{ paddingLeft: ".5rem" }} />
+              </CustomButton>
             </Stack>
           </Grid>
         </Grid>

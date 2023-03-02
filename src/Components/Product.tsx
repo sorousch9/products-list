@@ -1,10 +1,12 @@
-import Button from "@mui/material/Button";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import AddIcon from "@mui/icons-material/Add";
-import Typography from "@mui/material/Typography";
+import { useEffect } from "react";
+import {
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Typography,
+} from "@mui/material";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { Link } from "react-router-dom";
 import { useAppDispatch } from "./Hooks/hooks";
 import {
@@ -14,7 +16,7 @@ import {
   getTotalAmount,
   ProductType,
 } from "../Redux/cartRedux";
-import { useEffect } from "react";
+import CustomButton from "../UI/CustomButton";
 
 interface ItemType {
   product: ProductType;
@@ -24,7 +26,7 @@ const Product: React.FC<ItemType> = ({ product }) => {
   const dispatch = useAppDispatch();
   useEffect(() => {}, [dispatch]);
   if (!product) {
-    return null
+    return null;
   }
   const addToCart = (product: ProductType) => {
     dispatch(addProduct({ ...product }));
@@ -54,16 +56,19 @@ const Product: React.FC<ItemType> = ({ product }) => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button
-          variant="outlined"
-          size="small"
-          endIcon={<AddIcon />}
+        <CustomButton
+          variant="secondary"
+          style={{ padding: ".3rem" }}
           onClick={() => {
             addToCart(product);
           }}
         >
-          Add to Cart
-        </Button>
+          Add to Cart{" "}
+          <AddShoppingCartIcon
+            fontSize="small"
+            style={{ paddingLeft: ".5rem" }}
+          />
+        </CustomButton>
       </CardActions>
     </Card>
   );
