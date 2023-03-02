@@ -1,9 +1,12 @@
-
-
 1-mpm install
+
 2-npm install -g json-server
-3-npm start
-4-json-server --watch db.json --port 3004
+
+3-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+4-npm start
+
+5-json-server --watch db.json --port 3004
 
 If you get the error "json-server cannot be loaded because running scripts is disabled on this system", open your PowerShell as an administrator and set its execution policy with the Set-ExecutionPolicy command.
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser

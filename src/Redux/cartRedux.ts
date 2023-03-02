@@ -14,6 +14,7 @@ export interface ProductType {
   color: string[];
   size: string[];
   quantity: number;
+  inventory: number;
 }
 interface CartState {
   products: Array<ProductType>;
@@ -46,27 +47,21 @@ export const cartSlice = createSlice({
           (product) => product.id === item.id
         );
         if (existingProduct) {
-          // Check if product is in stock and available inventory is greater than requested quantity
-          if (
-            item.inStock &&
-            item.quantity + existingProduct.quantity < item.quantity
-          ) {
+          if (existingProduct.quantity < item.inventory) {
             state.products = state.products.map((product) =>
               product.id === item.id
                 ? { ...product, quantity: product.quantity + 1 }
                 : product
             );
           } else {
-            // Set the quantity to the maximum available quantity
             state.products = state.products.map((product) =>
               product.id === item.id
-                ? { ...product, quantity: item.quantity }
+                ? { ...product, quantity: item.inventory }
                 : product
             );
           }
         } else {
-          // Check if product is in stock and available inventory is greater than requested quantity
-          if (item.inStock && item.quantity > 0) {
+          if (item.inStock && item.inventory > 0) {
             state.products.push({ ...item, quantity: 1 });
           }
         }
@@ -92,10 +87,11 @@ export const cartSlice = createSlice({
       }, 0);
     },
     incrementQuantity: (state, action) => {
-      const index = state.products.findIndex(
-        (product) => product.id === action.payload
-      );
-      state.products[index].quantity += 1;
+      const { id, maxQuantity } = action.payload;
+      const product = state.products.find((p) => p.id === id);
+      if (product && product.quantity < maxQuantity) {
+        product.quantity += 1;
+      }
     },
     decrementQuantity: (state, action) => {
       const index = state.products.findIndex(

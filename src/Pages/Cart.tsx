@@ -52,7 +52,7 @@ const Cart: React.FC = () => {
   const { products, subAmount, totalAmount, shipPrice } = useAppSelector(
     (state) => state.cart
   );
-
+  console.log(products);
   useEffect(() => {
     dispatch(getCartProducts());
     dispatch(getSubTotal());
@@ -132,12 +132,16 @@ const Cart: React.FC = () => {
                             <RemoveIcon fontSize="small" />
                           </IconButton>
                           {product.quantity}
-
                           <IconButton
                             aria-label="add item"
                             size="small"
                             onClick={() => {
-                              dispatch(incrementQuantity(product.id));
+                              dispatch(
+                                incrementQuantity({
+                                  id: product.id,
+                                  maxQuantity: product.inventory,
+                                })
+                              );
                               dispatch(getSubTotal());
                               dispatch(getCartCount());
                               dispatch(getTotalAmount());
@@ -168,7 +172,9 @@ const Cart: React.FC = () => {
                         <TableCell colSpan={3} align="right">
                           Subtotal
                         </TableCell>
-                        <TableCell align="right">$ 36</TableCell>
+                        <TableCell align="right">
+                          ${(product.price * product.quantity).toFixed(2)}
+                        </TableCell>
                       </TableRow>
                     </TableBody>
                   ))
