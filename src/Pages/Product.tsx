@@ -124,9 +124,7 @@ const Product: React.FC = () => {
 
               <ItemMUI>
                 <FormControl sx={{ m: 2, minWidth: 180 }}>
-                  <InputLabel id="Size">
-                    Size
-                  </InputLabel>
+                  <InputLabel id="Size">Size</InputLabel>
                   <Select
                     labelId="Size"
                     id="Size"
@@ -149,9 +147,7 @@ const Product: React.FC = () => {
                   </FormHelperText>
                 </FormControl>
                 <FormControl sx={{ m: 2, minWidth: 180 }}>
-                  <InputLabel id="Color">
-                    Color
-                  </InputLabel>
+                  <InputLabel id="Color">Color</InputLabel>
                   <Select
                     labelId="Color"
                     id="Color"

@@ -137,12 +137,7 @@ const Cart: React.FC = () => {
                             aria-label="add item"
                             size="small"
                             onClick={() => {
-                              dispatch(
-                                incrementQuantity({
-                                  id: product.id,
-                                  maxQuantity: product.inventory,
-                                })
-                              );
+                              dispatch(incrementQuantity(product.id));
                               dispatch(getSubTotal());
                               dispatch(getCartCount());
                               dispatch(getTotalAmount());
