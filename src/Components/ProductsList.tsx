@@ -20,7 +20,6 @@ import {
   TextField,
   Pagination,
   PaginationItem,
-  Typography,
 } from "@mui/material";
 import axios from "axios";
 import { ProductType } from "../Redux/cartRedux";
@@ -62,8 +61,8 @@ interface Filters {
   inStock: boolean;
   color: string[];
   brand: string[];
-  _sort:string,
-  _order:string
+  _sort: string;
+  _order: string;
 }
 
 const ProductList: React.FC = () => {
@@ -76,10 +75,10 @@ const ProductList: React.FC = () => {
     inStock: true,
     color: [],
     brand: [],
-    _sort:"id",
-    _order:"asc"
+    _sort: "id",
+    _order: "asc",
   });
-  console.log(filters)
+  console.log(filters);
   const location = useLocation();
   const query = new URLSearchParams(location.search);
   const pageNumber = parseInt(query.get("page") || "1", 10);
@@ -105,13 +104,12 @@ const ProductList: React.FC = () => {
   };
   const handleSortChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
-    const [columnName, sortOrder] = value.split(' ');
+    const [columnName, sortOrder] = value.split(" ");
     setFilters({ ...filters, _order: sortOrder, _sort: columnName });
   };
   useEffect(() => {
     const fetchProducts = async () => {
       const params = new URLSearchParams();
-
       Object.entries(filters).forEach(([key, value]) => {
         if (Array.isArray(value)) {
           value.forEach((v) => params.append(key, v));
@@ -125,7 +123,6 @@ const ProductList: React.FC = () => {
       setProducts(response.data);
       setCountPrdoducts(response.headers["x-total-count"]);
     };
-
     fetchProducts();
   }, [filters, pageNumber, pageLimit]);
 
@@ -138,6 +135,8 @@ const ProductList: React.FC = () => {
         component="form"
         sx={{
           "& .MuiTextField-root": { m: 1, width: "25ch" },
+          display: "flex",
+          justifyContent: "center",
         }}
         noValidate
         autoComplete="off"
@@ -145,11 +144,12 @@ const ProductList: React.FC = () => {
         <TextField
           id="sortInput"
           select
+          color="success"
           label="Sort by ID"
           defaultValue="id asc"
           onChange={handleSortChange}
         >
-          <MenuItem value="id asc" >Newest</MenuItem>
+          <MenuItem value="id asc">Newest</MenuItem>
           <MenuItem value="id desc">in Descending</MenuItem>
           <MenuItem value="price asc">Lowest Price</MenuItem>
           <MenuItem value="price desc">Highest Price</MenuItem>
