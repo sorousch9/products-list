@@ -26,11 +26,12 @@ To install this project, follow the steps below:
 
 5. Open a new terminal window and start the json-server by running the following command:
 
-```bash json-server --watch db.json --port 3004`
+
+'json-server --watch db.json --port 3004'
 
 6. If you encounter the error "json-server cannot be loaded because running scripts is disabled on this system", open your PowerShell as an administrator or normal and set its execution policy with the following command:
 
-```bash Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser`
+ `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser`
 
 ## Usage
 
