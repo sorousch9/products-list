@@ -54,12 +54,13 @@ const Cart: React.FC = () => {
   const { products, subAmount, totalAmount, shipPrice } = useAppSelector(
     (state) => state.cart
   );
+
   useEffect(() => {
     dispatch(getCartProducts());
     dispatch(getSubTotal());
     dispatch(getCartCount());
     dispatch(getTotalAmount());
-  }, [dispatch]);
+  }, [dispatch, totalAmount]);
 
   return (
     <Fragment>

@@ -63,7 +63,6 @@ export const cartSlice = createSlice({
           state.products.push({ ...item, quantity: 1 });
         }
       }
-      getTotalAmount()
     },
     getCartProducts: (state) => {
       return state;
@@ -88,8 +87,7 @@ export const cartSlice = createSlice({
       const product = state.products[index];
       if (product && product.quantity < product.inventory) {
         product.quantity += 1;
-      getTotalAmount()
-    }
+      }
     },
     decrementQuantity: (state, action: PayloadAction<number>) => {
       const index = state.products.findIndex(
@@ -99,7 +97,6 @@ export const cartSlice = createSlice({
       if (product.quantity > 0) {
         product.quantity -= 1;
       }
-      getTotalAmount()
     },
     removeProduct: (state, action: PayloadAction<number>) => {
       const index = state.products.findIndex(
