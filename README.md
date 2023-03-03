@@ -1,4 +1,5 @@
 Products List
+
 # Products List
 
 This is a React app that displays a list of products. It uses Redux for state management and Axios for making API requests.
@@ -13,15 +14,15 @@ To install this project, follow the steps below:
 
 2. Navigate to the project directory using the following command:
 
+```bash
 `cd products-list`
-
 
 3. Install the project dependencies by running the following command:
 
 `npm install`
 
 4. Install json-server globally by running the following command:
-`npm install -g json-server`
+   `npm install -g json-server`
 
 5. Open a new terminal window and start the json-server by running the following command:
 
@@ -31,13 +32,10 @@ To install this project, follow the steps below:
 
 `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser`
 
-
-
 ## Usage
 
 To start the app, run the following command:
 `npm start`
-
 
 The app will be available at http://localhost:3000.
 
@@ -64,7 +62,3 @@ All dependencies are listed in the `package.json` file.
 ## License
 
 This project is licensed under the MIT License. See the `LICENSE` file for more information.
-
-
-
-
