@@ -16,7 +16,7 @@
       "id": 2,
       "name": "Product 2",
       "description": "This is a discription for this product",
-      "price": 20,
+      "price": 35,
       "img": "https://images.pexels.com/photos/12564670/pexels-photo-12564670.jpeg?auto=compress&cs=tinysrgb&w=1600",
       "size": "40",
       "color": "white",
@@ -28,7 +28,7 @@
       "id": 3,
       "name": "Product 3",
       "description": "This is a discription for this product",
-      "price": 30,
+      "price": 22,
       "img": "https://images.pexels.com/photos/4464488/pexels-photo-4464488.jpeg?auto=compress&cs=tinysrgb&w=1600",
       "size": "40",
       "color": "Black",
@@ -45,7 +45,7 @@
       "size": "26",
       "color": "perple",
       "inStock": true,
-      "inventory": 5,
+      "inventory": 3,
       "brand": "Nike"
     },
     {
@@ -69,7 +69,7 @@
       "size": "38",
       "color": "green",
       "inStock": true,
-      "inventory": 5,
+      "inventory": 8,
       "brand": "Reebok"
     },
     {
@@ -81,7 +81,7 @@
       "size": "38",
       "color": "Black",
       "inStock": true,
-      "inventory": 5,
+      "inventory": 6,
       "brand": "Reebok"
     },
     {
@@ -105,7 +105,7 @@
       "size": "38",
       "color": "white",
       "inStock": true,
-      "inventory": 5,
+      "inventory": 2,
       "brand": "Armani"
     },
     {
@@ -117,7 +117,7 @@
       "size": "42",
       "color": "Black",
       "inStock": true,
-      "inventory": 5,
+      "inventory": 9,
       "brand": "BOSS"
     },
     {
@@ -129,7 +129,7 @@
       "size": "48",
       "color": "Black",
       "inStock": true,
-      "inventory": 5,
+      "inventory": 7,
       "brand": "Adidas"
     },
     {
@@ -141,7 +141,7 @@
       "size": "38",
       "color": "yellow",
       "inStock": true,
-      "inventory": 5,
+      "inventory": 6,
       "brand": "Puma"
     },
     {
@@ -165,7 +165,7 @@
       "size": "38",
       "color": "red",
       "inStock": true,
-      "inventory": 5,
+      "inventory": 6,
       "brand": "Nike"
     },
     {
@@ -249,7 +249,7 @@
       "size": "40",
       "color": "green",
       "inStock": true,
-      "inventory": 5,
+      "inventory": 4,
       "brand": "Puma"
     },
     {
@@ -273,7 +273,7 @@
       "size": "40",
       "color": "white",
       "inStock": true,
-      "inventory": 5,
+      "inventory": 4,
       "brand": "Nike"
     },
     {
@@ -297,7 +297,7 @@
       "size": "38",
       "color": "perple",
       "inStock": true,
-      "inventory": 5,
+      "inventory": 2,
       "brand": "Armani"
     },
     {
@@ -321,7 +321,7 @@
       "size": "42",
       "color": "yellow",
       "inStock": true,
-      "inventory": 5,
+      "inventory": 7,
       "brand": "BOSS"
     },
     {
@@ -345,7 +345,7 @@
       "size": "38",
       "color": "perple",
       "inStock": true,
-      "inventory": 5,
+      "inventory": 8,
       "brand": "Nike"
     },
     {
@@ -357,7 +357,7 @@
       "size": "26",
       "color": "yellow",
       "inStock": true,
-      "inventory": 5,
+      "inventory": 9,
       "brand": "Adidas"
     },
     {

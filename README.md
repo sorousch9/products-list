@@ -1,5 +1,3 @@
-Products List
-
 # Products List
 
 This is a React app that displays a list of products. It uses Redux for state management and Axios for making API requests.
@@ -22,12 +20,13 @@ To install this project, follow the steps below:
 ``npm install``
 
 4. Install json-server globally by running the following command:
+
 ``npm install -g json-server``
 
 5. Open a new terminal window and start the json-server by running the following command:
 
 
-echo ``json-server --watch db.json --port 3004``
+``json-server --watch db.json --port 3004``
 
 6. If you encounter the error "json-server cannot be loaded because running scripts is disabled on this system", open your PowerShell as an administrator or normal and set its execution policy with the following command:
 

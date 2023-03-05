@@ -128,7 +128,7 @@ const Product: React.FC = () => {
                   <Select
                     labelId="Size"
                     id="Size"
-                    value={size}
+                    defaultValue={size}
                     label="Size"
                     onChange={handleChange}
                   >
