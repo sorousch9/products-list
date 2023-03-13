@@ -78,7 +78,7 @@ const ProductList: React.FC = () => {
     _sort: "id",
     _order: "asc",
   });
-  console.log(filters);
+
   const location = useLocation();
   const query = new URLSearchParams(location.search);
   const pageNumber = parseInt(query.get("page") || "1", 10);
